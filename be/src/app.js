@@ -10,7 +10,7 @@ import { v2 as cloudinary } from 'cloudinary';
 import { Server } from 'socket.io'
 import http from 'http';
 import cron from 'node-cron'
-// import bookingService from './services/booking.service.js'
+import bookingService from './services/booking.service.js'
 import { STARTDATE_SLOT1, ENDDATE_SLOT1, STARTDATE_SLOT2, ENDDATE_SLOT2, STARTDATE_SLOT3, ENDDATE_SLOT3, STARTDATE_SLOT4, ENDDATE_SLOT4, STARTDATE_SLOT5, ENDDATE_SLOT5, STARTDATE_SLOT6, ENDDATE_SLOT6, STARTDATE_SLOT7, ENDDATE_SLOT7, STARTDATE_SLOT8, ENDDATE_SLOT8, STARTDATE_SLOT9, ENDDATE_SLOT9 } from '../src/Enum/DateTimeSlot.js';
 
 // Tạo mảng chứa các time slot

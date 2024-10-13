@@ -1,3 +1,4 @@
+
 import mongoose, { ObjectId, Schema } from "mongoose";
 
 const Facility = mongoose.model("Facility", new Schema(
@@ -43,5 +44,6 @@ const Facility = mongoose.model("Facility", new Schema(
 		timestamps: true
 	}
 ))
+
 
 export default Facility;
