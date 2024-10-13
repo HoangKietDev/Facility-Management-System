@@ -57,46 +57,6 @@ export const weekOptions = [
   "23/12 To 29/12",
 ];
 
-// export const getCurrentWeekTime = () => {
-//   const currentDate = new Date();
-//   const currentDay = currentDate.getDay();
-//   const diff = currentDate.getDate() - currentDay + (currentDay === 0 ? -6 : 1);
-//   const startOfWeek = new Date(currentDate.setDate(diff));
-//   const endOfWeek = new Date(startOfWeek);
-//   endOfWeek.setDate(endOfWeek.getDate() + 6);
-
-//   const startDateFormat = `${startOfWeek.getDate()}/${
-//     startOfWeek.getMonth() + 1
-//   }`;
-//   const endDateFormat = `${endOfWeek.getDate()}/${endOfWeek.getMonth() + 1}`;
-
-//   const stringSearch = `${
-//     startOfWeek.getDate() < 10
-//       ? `0${startOfWeek.getDate()}`
-//       : `${startOfWeek.getDate()}`
-//   }/${
-//     startOfWeek.getMonth() + 1 < 10
-//       ? `0${startOfWeek.getMonth() + 1}`
-//       : `${startOfWeek.getMonth() + 1}`
-//   } To ${
-//     endOfWeek.getDate() < 10
-//       ? `0${endOfWeek.getDate()}`
-//       : `${endOfWeek.getDate()}`
-//   }/${
-//     endOfWeek.getMonth() + 1 < 10
-//       ? `0${endOfWeek.getMonth() + 1}`
-//       : `${endOfWeek.getMonth() + 1}`
-//   }`;
-
-//   console.log("Searching for:", stringSearch);
-//   console.log("Array:", weekOptions);
-
-//   const index = weekOptions.findIndex((week) => week === stringSearch);
-//   console.log("Index:", index);
-
-//   return index;
-// };
-
 export const getCurrentWeekTime = () => {
   const currentDate = new Date();
   const currentDay = currentDate.getDay();
