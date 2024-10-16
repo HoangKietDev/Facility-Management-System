@@ -207,7 +207,7 @@ const FindBoookinUser = async (req) => {
 // }
 /*
 Tên hàm: lúc 12 h kiểm tra các booking nào là 5 mà đã quá ngày thì cho về là 2 
-người tạo: Đặng Đình Quốc Khánh
+người tạo: manhpd
 */
 // const checkBookingExpire5 = async () => {
 //     try {
@@ -225,5 +225,4 @@ export default {
     create, Dashboard, DashboardWeek,
     update, FindAll, deleteOne, detail, statusBooking, FindBoookinUser,
 
-    CheckExpireBooking, CheckUnusedBooking, checkBookingExpire5, updateBookingWhenFacilityDelete
 }
