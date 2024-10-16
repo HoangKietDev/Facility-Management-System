@@ -56,70 +56,70 @@ const detail = async (req, res) => {
 
 }
 
-const FindBoookinUser = async (req, res) => {
-    try {
-        const result = await bookingService.FindBoookinUser(req);
-        res.status(200).json(result);
-    } catch (error) {
-        return res.status(500).json({
-            statusCode: 0,
-            message: "System error"
-        })
-    }
+// const FindBoookinUser = async (req, res) => {
+//     try {
+//         const result = await bookingService.FindBoookinUser(req);
+//         res.status(200).json(result);
+//     } catch (error) {
+//         return res.status(500).json({
+//             statusCode: 0,
+//             message: "System error"
+//         })
+//     }
 
-}
-const statusBooking = async (req, res) => {
-    try {
-        const result = await bookingService.statusBooking(req);
-        res.status(200).json(result);
-    } catch (error) {
-        return res.status(500).json({
-            statusCode: 0,
-            message: "System error"
-        })
-    }
+// }
+// const statusBooking = async (req, res) => {
+//     try {
+//         const result = await bookingService.statusBooking(req);
+//         res.status(200).json(result);
+//     } catch (error) {
+//         return res.status(500).json({
+//             statusCode: 0,
+//             message: "System error"
+//         })
+//     }
 
-}
+// }
 
-const listPagination = async (req, res) => {
+// const listPagination = async (req, res) => {
 
-    try {
-        console.log("hello");
-        const response = await bookingService.FindAll(req);
+//     try {
+//         console.log("hello");
+//         const response = await bookingService.FindAll(req);
 
-        return res.status(200).json(response);
-    } catch (error) {
-        return res.status(500).json({
-            message: error?.message || error,
-        });
-    }
-}
-const Dashboard = async (req, res) => {
+//         return res.status(200).json(response);
+//     } catch (error) {
+//         return res.status(500).json({
+//             message: error?.message || error,
+//         });
+//     }
+// }
+// const Dashboard = async (req, res) => {
 
-    try {
-        console.log("hello");
-        const response = await bookingService.Dashboard(req);
+//     try {
+//         console.log("hello");
+//         const response = await bookingService.Dashboard(req);
 
-        return res.status(200).json(response);
-    } catch (error) {
-        return res.status(500).json({
-            message: error?.message || error,
-        });
-    }
-}
-const DashboardWeek = async (req, res) => {
+//         return res.status(200).json(response);
+//     } catch (error) {
+//         return res.status(500).json({
+//             message: error?.message || error,
+//         });
+//     }
+// }
+// const DashboardWeek = async (req, res) => {
 
-    try {
-        console.log("hello");
-        const response = await bookingService.DashboardWeek(req);
+//     try {
+//         console.log("hello");
+//         const response = await bookingService.DashboardWeek(req);
 
-        return res.status(200).json(response);
-    } catch (error) {
-        return res.status(500).json({
-            message: error?.message || error,
-        });
-    }
-}
+//         return res.status(200).json(response);
+//     } catch (error) {
+//         return res.status(500).json({
+//             message: error?.message || error,
+//         });
+//     }
+// }
 
 export default {
     create,

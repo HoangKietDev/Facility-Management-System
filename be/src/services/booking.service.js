@@ -160,67 +160,67 @@ const FindBoookinUser = async (req) => {
 // tên hàm: chuyênr trạng thái của booking < ngày hôm nay sang status reject 
 // tham số bookings: mảng booking muốn check;
 
-const CheckExpireBooking = async () => {
-    try {
-        const updateResult = await Booking.updateMany(
-            { 'startDate': { $lte: new Date() }, "status": 1 },
-            { $set: { 'status': 4, reason: "Quá hạn" } },
-        );
-        return updateResult;
-    } catch (err) {
-        console.error(err);
-    }
-}
+// const CheckExpireBooking = async () => {
+//     try {
+//         const updateResult = await Booking.updateMany(
+//             { 'startDate': { $lte: new Date() }, "status": 1 },
+//             { $set: { 'status': 4, reason: "Quá hạn" } },
+//         );
+//         return updateResult;
+//     } catch (err) {
+//         console.error(err);
+//     }
+// }
 
-const CheckUnusedBooking = async (slot) => {
-    try {
-        const updateResult = await Booking.updateMany(
-            {
-                'startDate': { $lte: new Date() },
-                'endDate': { $gte: new Date() },
-                'status': 2, // Phần này cần nằm trong object của điều kiện tìm kiếm
-                'slot': slot // Phần này cần nằm trong object của điều kiện tìm kiếm
-            },
-            { $set: { 'status': 2 } }
-        );
+// const CheckUnusedBooking = async (slot) => {
+//     try {
+//         const updateResult = await Booking.updateMany(
+//             {
+//                 'startDate': { $lte: new Date() },
+//                 'endDate': { $gte: new Date() },
+//                 'status': 2, // Phần này cần nằm trong object của điều kiện tìm kiếm
+//                 'slot': slot // Phần này cần nằm trong object của điều kiện tìm kiếm
+//             },
+//             { $set: { 'status': 2 } }
+//         );
 
-        return updateResult;
-    } catch (err) {
-        console.error(err);
-    }
-}
-const updateBookingWhenFacilityDelete = async (facilityId) => {
-    try {
-        const updateResult = await Booking.updateMany(
-            {
-                'startDate': { $gte: new Date() },
-                'status': 1, // Phần này cần nằm trong object của điều kiện tìm kiếm
-                'facilityId': facilityId // Phần này cần nằm trong object của điều kiện tìm kiếm
-            },
-            { $set: { 'status': 4, reason: "Cơ sở vật chất ngừng hoạt động" } }
-        );
+//         return updateResult;
+//     } catch (err) {
+//         console.error(err);
+//     }
+// }
+// const updateBookingWhenFacilityDelete = async (facilityId) => {
+//     try {
+//         const updateResult = await Booking.updateMany(
+//             {
+//                 'startDate': { $gte: new Date() },
+//                 'status': 1, // Phần này cần nằm trong object của điều kiện tìm kiếm
+//                 'facilityId': facilityId // Phần này cần nằm trong object của điều kiện tìm kiếm
+//             },
+//             { $set: { 'status': 4, reason: "Cơ sở vật chất ngừng hoạt động" } }
+//         );
 
-        return updateResult;
-    } catch (err) {
-        console.error(err);
-    }
-}
+//         return updateResult;
+//     } catch (err) {
+//         console.error(err);
+//     }
+// }
 /*
 Tên hàm: lúc 12 h kiểm tra các booking nào là 5 mà đã quá ngày thì cho về là 2 
 người tạo: Đặng Đình Quốc Khánh
 */
-const checkBookingExpire5 = async () => {
-    try {
-        const updateResult = await Booking.updateMany(
-            { 'startDate': { $lte: new Date() }, "status": 5 },
-            { $set: { 'status': 2 } },
-        );
+// const checkBookingExpire5 = async () => {
+//     try {
+//         const updateResult = await Booking.updateMany(
+//             { 'startDate': { $lte: new Date() }, "status": 5 },
+//             { $set: { 'status': 2 } },
+//         );
 
 
-    } catch (err) {
-        console.error(err);
-    }
-}
+//     } catch (err) {
+//         console.error(err);
+//     }
+// }
 export default {
     create, Dashboard, DashboardWeek,
     update, FindAll, deleteOne, detail, statusBooking, FindBoookinUser,
