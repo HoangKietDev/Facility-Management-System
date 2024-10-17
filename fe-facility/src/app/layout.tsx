@@ -20,12 +20,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      
       <body className={inter.className}>
         <AppProvider>{children}</AppProvider>
         <Script
           type="application/javascript"
           src="https://accounts.google.com/gsi/client"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
         />
       </body>
     </html>
