@@ -12,11 +12,11 @@ import {
   UserOutlined,
   FileZipOutlined,
 } from "@ant-design/icons";
-// import Analysist from "./Analysist";
-// import ManageFacilites from "./ManageFacilities";
+import Analysist from "./Analysist";
+import ManageFacilites from "./ManageFacilities";
 // import ManageBookingRequest from "./ManageBookingRequest";
 import ManageAccount from "./ManageAccount";
-// import RecycleFacilities from "./Recycle";
+import RecycleFacilities from "./Recycle";
 // import CategoryComponent from "../CategoryComponent";
 // import ManageBookingRequestAccept from "../ManageBookingRequestAccept";
 // import ManageBookingRequestReject from "../ManageBookingRequestReject";
@@ -112,10 +112,10 @@ const DashboardComponent: React.FC = () => {
       <div className="flex-grow">
         {key === "1" && <Analysist />}
         {key === "2" && <ManageFacilites />}
-        {key === "3" && <ManageBookingRequest />}
+        {/* {key === "3" && <ManageBookingRequest />}
         {key === "7" && <ManageBookingRequestAccept />}
         {key === "8" && <ManageBookingRequestReject />}
-        {key === "9" && <ManageBookingRequestExpired />}
+        {key === "9" && <ManageBookingRequestExpired />} */}
         {key === "4" && <ManageAccount />}
         {/* {key === "5" && <RecycleFacilities />} */}
         {/* {key === "6" && <CategoryComponent />} */}
