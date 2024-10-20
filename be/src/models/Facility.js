@@ -43,5 +43,4 @@ const Facility = mongoose.model("Facility", new Schema(
 		timestamps: true
 	}
 ))
-
 export default Facility;

@@ -21,7 +21,7 @@ const LoginComponent = () => {
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined" && (window as any)?.google) {
+    if ((window as any)?.google) {
       const goolge = (window as any)?.google;
       goolge.accounts.id.initialize({
         client_id: process.env.NEXT_PUBLIC_GG_ID,
