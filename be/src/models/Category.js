@@ -1,3 +1,4 @@
+
 import mongoose, { ObjectId, Schema } from "mongoose";
 
 const Category = mongoose.model("Category", new Schema(
@@ -23,5 +24,6 @@ const Category = mongoose.model("Category", new Schema(
 		timestamps: true
 	}
 ))
+
 
 export default Category;
