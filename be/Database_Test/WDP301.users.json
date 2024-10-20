@@ -1,89 +1,19 @@
-[{
-  "_id": {
-    "$oid": "65a8d48dcc27741e746f7b5a"
-  },
-  "name": "Jane Doe",
-  "email": "615e74a1b54597001e8b9171",
-  "image": "https://example.com/jane_doe.jpg",
-  "status": 1,
-  "location": "Los Angeles",
-  "createdAt": "2021-10-09T08:12:34.567Z",
-  "updatedAt": "2021-10-09T08:12:34.567Z"
-},
 {
   "_id": {
-    "$oid": "65a8d48dcc27741e746f7b5b"
-  },
-  "name": "Bob Smith",
-  "email": "615e74a1b54597001e8b9174",
-  "image": "https://example.com/bob_smith.jpg",
-  "status": 1,
-  "location": "Chicago",
-  "createdAt": "2021-10-10T15:45:23.456Z",
-  "updatedAt": "2021-10-10T15:45:23.456Z"
-},
-{
-  "_id": {
-    "$oid": "65bc5cbea8e5961c0621d9ba"
-  },
-  "id": "615e74a1b54597001e8b9173",
-  "name": "Bob Smith",
-  "email": "615e74a1b54597001e8b9174",
-  "image": "https://example.com/bob_smith.jpg",
-  "status": 1,
-  "location": "Chicago",
-  "createdAt": "2021-10-10T15:45:23.456Z",
-  "updatedAt": "2021-10-10T15:45:23.456Z",
-  "roleId": "65bc5c56a8e5961c0621d9b4\n"
-},
-{
-  "_id": {
-    "$oid": "65bc5d2fa8e5961c0621d9c1"
-  },
-  "id": "615e74a1b54597001e8b9173",
-  "name": "Bob Smith",
-  "email": "65bc5c56a8e5961c0621d9b3",
-  "image": "https://example.com/bob_smith.jpg",
-  "status": 1,
-  "location": "Chicago",
-  "createdAt": "2021-10-10T15:45:23.456Z",
-  "updatedAt": {
-    "$date": "2024-03-10T12:41:48.031Z"
+    "$oid": "670ea4fe1cd437ba6c692548"
   },
   "roleId": {
-    "$oid": "65dd884c75fbf9312982e7db"
-  }
-},
-{
-  "_id": {
-    "$oid": "65bc5d40a8e5961c0621d9c3"
+    "$oid": "6704b034dca1fe26d189f83b"
   },
-  "id": "615e74a1b54597001e8b9170",
-  "name": "Jane Doe",
-  "email": "615e74a1b54597001e8b9171",
-  "image": "https://example.com/jane_doe.jpg",
-  "status": 1,
-  "location": "Los Angeles",
-  "createdAt": "2021-10-09T08:12:34.567Z",
-  "updatedAt": "2021-10-09T08:12:34.567Z",
-  "roleId": "65bc5c56a8e5961c0621d9b3"
-},
-{
-  "_id": {
-    "$oid": "65dd885175fbf9312982e7df"
-  },
-  "roleId": {
-    "$oid": "65dd884c75fbf9312982e7db"
-  },
-  "name": "Dang Dinh Quoc Khanh (K16_HL)",
-  "email": "khanhddqhe161879@fpt.edu.vn",
-  "avatar": "https://lh3.googleusercontent.com/a/ACg8ocKi9SVxbHJ4n4OdOrQqB4eCjgv_wnFONOrg6iajcprn=s96-c",
+  "name": "Pham Duc Manh (K16_HL)",
+  "email": "manhpdhe160198@fpt.edu.vn",
+  "avatar": "https://lh3.googleusercontent.com/a/ACg8ocIY40luQDhEe8fTP3iMWV1BG_HSiQiJsH_Y0UqYhcn3zG4Tcw=s96-c",
   "status": 1,
   "createdAt": {
-    "$date": "2024-02-27T06:59:29.291Z"
+    "$date": "2024-10-15T17:23:10.777Z"
   },
   "updatedAt": {
-    "$date": "2024-02-27T06:59:29.291Z"
+    "$date": "2024-10-15T17:23:10.777Z"
   },
   "__v": 0
-}]
+}
