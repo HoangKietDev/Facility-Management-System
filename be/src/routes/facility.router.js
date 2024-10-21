@@ -1,3 +1,4 @@
+
 import express from 'express';
 import { facilityController } from '../controllers/index.js';
 import { authJWT, validator } from '../middlewares/index.js'
@@ -35,4 +36,5 @@ facilityRouter.put("/update",
 facilityRouter.delete("/delete", [authJWT.verifyToken, authJWT.checkRole("Admin")], facilityController.changeStatus);
 facilityRouter.get("/stastic-by-category", [authJWT.verifyToken], facilityController.getListFacilityByCategory);
  
+
 export default facilityRouter;

@@ -1,450 +1,233 @@
 {
-    "openapi": "3.0.0",
-    "info": {
+  "swagger": "2.0",
+  "info": {
       "title": "Manage Facilities API",
-      "description": "API for managing users, facilities, and categories.",
+      "description": "API description in Markdown.",
       "version": "1.0.0"
-    },
-    "servers": [
+  },
+  "host": "localhost:5152",
+  "basePath": "/",
+  "tag": [
       {
-        "url": "http://localhost:5152"
-      }
-    ],
-    "tags": [
-      {
-        "name": "user",
-        "description": "Operations about users"
+          "name": "user",
+          "description": "Everything about user"
       },
       {
-        "name": "facility",
-        "description": "Operations about facilities"
+          "name": "facility",
+          "description": "Everything about facility"
       },
       {
-        "name": "category",
-        "description": "Operations about categories"
+          "name": "category",
+          "description": "Everything about category"
       }
-    ],
-    "paths": {
+  ],
+  "schemes": [
+      "http"
+  ],
+  "paths": {
       "/users": {
-        "get": {
-          "tags": ["user"],
-          "summary": "Get list of users",
-          "description": "Retrieve all users",
-          "responses": {
-            "200": {
-              "description": "List of users",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/User"
-                    }
+          "get": {
+              "tags": [
+                  "user"
+              ],
+              "summary": "Returns a list of users.",
+              "description": "Optional extended description",
+              "produces": [
+                  "application/json"
+              ],
+              "responses": {
+                  "200": {
+                      "description": "OK"
                   }
-                }
               }
-            }
           }
-        },
-        "post": {
-          "tags": ["user"],
-          "summary": "Create a new user",
-          "description": "Add a new user",
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            }
-          },
-          "responses": {
-            "201": {
-              "description": "User created"
-            }
-          }
-        }
       },
       "/users/{id}": {
-        "get": {
-          "tags": ["user"],
-          "summary": "Get user by ID",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "description": "ID of user to retrieve",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "User details",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/User"
+          "get": {
+              "tags": [
+                  "user"
+              ],
+              "summary": "Return an user detail",
+              "description": "Get user detail data",
+              "parameters": [
+                  {
+                      "name": "id",
+                      "in": "path",
+                      "description": "ID of user to get detail",
+                      "require": true,
+                      "type": "String"
                   }
-                }
+              ],
+              "produces": [
+                  "application/json"
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Get user detail"
+                  }
               }
-            }
-          }
-        },
-        "put": {
-          "tags": ["user"],
-          "summary": "Update a user",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "description": "ID of user to update",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            }
           },
-          "responses": {
-            "200": {
-              "description": "User updated"
-            }
-          }
-        },
-        "delete": {
-          "tags": ["user"],
-          "summary": "Delete a user",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "description": "ID of user to delete",
-              "schema": {
-                "type": "string"
+          "put": {
+              "tags": [
+                  "user"
+              ],
+              "summary": "Update an user",
+              "description": "Update an user",
+              "parameters": [
+                  {
+                      "name": "id",
+                      "in": "path",
+                      "description": "ID of user to get detail",
+                      "require": true,
+                      "type": "String"
+                  },
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "description": "User object that need to be update",
+                      "require": true,
+                      "schema": {
+                          "$ref": "#/definitions/User"
+                      }
+                  }
+              ],
+              "produces": [
+                  "application/json"
+              ],
+              "responses": {
+                  "200": {
+                      "description": "User updated"
+                  }
               }
-            }
-          ],
-          "responses": {
-            "204": {
-              "description": "User deleted"
-            }
           }
-        }
       },
-      "/facilities": {
-        "get": {
-          "tags": ["facility"],
-          "summary": "Get list of facilities",
-          "responses": {
-            "200": {
-              "description": "List of facilities",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Facility"
-                    }
+      "/facility/create": {
+          "post": {
+              "tags": [
+                  "facility"
+              ],
+              "summary": "Create an facility",
+              "description": "Create new facility",
+              "parameters": [
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "description": "Facility object that need to be create",
+                      "require": true,
+                      "schema": {
+                          "$ref": "#/definitions/Facility"
+                      }
                   }
-                }
+              ],
+              "produces": [
+                  "application/json"
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Facility created"
+                  }
               }
-            }
           }
-        },
-        "post": {
-          "tags": ["facility"],
-          "summary": "Create a new facility",
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Facility"
-                }
-              }
-            }
-          },
-          "responses": {
-            "201": {
-              "description": "Facility created"
-            }
-          }
-        }
       },
-      "/facilities/{id}": {
-        "get": {
-          "tags": ["facility"],
-          "summary": "Get facility by ID",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "description": "ID of facility to retrieve",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Facility details",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Facility"
+      "/category/create": {
+          "post": {
+              "tags": [
+                  "category"
+              ],
+              "summary": "Create a category",
+              "description": "Create new category",
+              "parameters": [
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "description": "Name of category",
+                      "require": true,
+                      "schema": {
+                          "$ref": "#/definitions/Category"
+                      }
                   }
-                }
+              ],
+              "produces": [
+                  "application/json"
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Category created"
+                  }
               }
-            }
           }
-        },
-        "put": {
-          "tags": ["facility"],
-          "summary": "Update a facility",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "description": "ID of facility to update",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Facility"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Facility updated"
-            }
-          }
-        },
-        "delete": {
-          "tags": ["facility"],
-          "summary": "Delete a facility",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "description": "ID of facility to delete",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "204": {
-              "description": "Facility deleted"
-            }
-          }
-        }
       },
-      "/categories": {
-        "get": {
-          "tags": ["category"],
-          "summary": "Get list of categories",
-          "responses": {
-            "200": {
-              "description": "List of categories",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Category"
-                    }
+      "/category/list": {
+          "get": {
+              "tags": [
+                  "category"
+              ],
+              "summary": "Get list category",
+              "description": "Get all category",
+              "produces": [
+                  "application/json"
+              ],
+              "responses": {
+                  "200": {
+                      "description": "List faclities"
                   }
-                }
               }
-            }
           }
-        },
-        "post": {
-          "tags": ["category"],
-          "summary": "Create a new category",
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Category"
-                }
-              }
-            }
-          },
-          "responses": {
-            "201": {
-              "description": "Category created"
-            }
-          }
-        }
-      },
-      "/categories/{id}": {
-        "get": {
-          "tags": ["category"],
-          "summary": "Get category by ID",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "description": "ID of category to retrieve",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Category details",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Category"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "put": {
-          "tags": ["category"],
-          "summary": "Update a category",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "description": "ID of category to update",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Category"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Category updated"
-            }
-          }
-        },
-        "delete": {
-          "tags": ["category"],
-          "summary": "Delete a category",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "description": "ID of category to delete",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "204": {
-              "description": "Category deleted"
-            }
-          }
-        }
       }
-    },
-    "components": {
-      "schemas": {
-        "User": {
+  },
+  "definitions": {
+      "User": {
           "type": "object",
           "properties": {
-            "name": {
-              "type": "string"
-            },
-            "email": {
-              "type": "string"
-            },
-            "avatar": {
-                "type": "string"
-            },
-            "status": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "address": {
-              "type": "string"
-            }
-          },
-          "required": ["name", "email"]
-        },
-        "Facility": {
+              "name": {
+                  "type": "string"
+              },
+              "email": {
+                  "type": "string"
+              },
+              "avatar": {
+                  "type": "string"
+              },
+              "status": {
+                  "type": "integer",
+                  "format": "int32"
+              },
+              "address": {
+                  "type": "string"
+              }
+          }
+      },
+      "Facility": {
           "type": "object",
           "properties": {
-            "name": {
-              "type": "string"
-            },
-            "category": {
-              "type": "string"
-            },
-            "image": {
-              "type": "string"
-            },
-            "status": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "location": {
-              "type": "string"
-            },
-            "description": {
-              "type": "string"
-            }
-          },
-          "required": ["name", "category"]
-        },
-        "Category": {
+              "name": {
+                  "type": "string"
+              },
+              "category": {
+                  "type": "string"
+              },
+              "image": {
+                  "type": "string"
+              },
+              "status": {
+                  "type": "integer",
+                  "format": "int32"
+              },
+              "location": {
+                  "type": "string"
+              },
+              "description": {
+                  "type": "string"
+              }
+          }
+      },
+      "Category": {
           "type": "object",
           "properties": {
-            "categoryName": {
-              "type": "string"
-            }
-          },
-          "required": ["categoryName"]
-        }
+              "categoryName": {
+                  "type": "string"
+              }
+          }
       }
-    }
   }
-  
-  
+}
