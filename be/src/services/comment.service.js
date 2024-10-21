@@ -7,8 +7,8 @@ import notificationService from "./notification.service.js";
 
 const create = async (comment, userId) => {
     try {
-        const resultCheckPermission = await checkCommentPermisson({facilityId: comment.facility, userId});
-        if(resultCheckPermission.statusCode === 0){
+        const resultCheckPermission = await checkCommentPermisson({ facilityId: comment.facility, userId });
+        if (resultCheckPermission.statusCode === 0) {
             return {
                 statusCode: 0,
                 message: "You only can comment after using facility with each booking request."
@@ -22,7 +22,7 @@ const create = async (comment, userId) => {
                 message: "You are already commented facility for this booking."
             }
         }
-        if(comment.star < 1 || comment.star > 5){
+        if (comment.star < 1 || comment.star > 5) {
             return {
                 statusCode: 0,
                 message: "Star is between 1 and 5"
@@ -61,9 +61,10 @@ const create = async (comment, userId) => {
 
 const checkCommentPermisson = async ({ facilityId, userId }) => {
     try {
-        const currentDate = new Date(); 
+        const currentDate = new Date();
         const checkBooking = await Booking.findOne({ facilityId, booker: userId, status: 2, isComment: false, startDate: { $lte: currentDate } });
         const totalComment = await Booking.countDocuments({ facilityId, booker: userId, status: 2, isComment: false, startDate: { $lte: currentDate } });
+        console.log("Current Date:", currentDate);
         if (!checkBooking) {
             return {
                 statusCode: 0,
@@ -109,19 +110,19 @@ const edit = async (comment) => {
 }
 
 const getCommentsByFacilityId = async (facilityId, page, size) => {
-    try{
+    try {
         const startIndex = (page - 1) * size;
         console.log(page, size, startIndex);
-        const comments = await commentRepository.findPagination({facility: facilityId, startIndex, size});
+        const comments = await commentRepository.findPagination({ facility: facilityId, startIndex, size });
         return {
             statusCode: 1,
             message: "Get data successfully",
             items: comments.items,
-            totalPage: Math.ceil(comments.total/size),
+            totalPage: Math.ceil(comments.total / size),
             activePage: page,
             totalComment: comments.total
         }
-    }catch(error){
+    } catch (error) {
         return {
             statusCode: 0,
             message: error.toString()

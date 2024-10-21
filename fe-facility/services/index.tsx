@@ -5,14 +5,14 @@ import Image from "next/image";
 import { Badge } from "primereact/badge";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
-import { StorageService } from "../../services/storage";
+import { StorageService } from "../services/storage";
 import { addUser } from "@/redux/slices/storeUserSlice";
 import { useDispatch } from "react-redux";
 import { Menu } from "primereact/menu";
 import {
   getNotification,
   readNotification,
-} from "../../services/notification.api";
+} from "../services/notification.api";
 import { set } from "zod";
 
 interface NavbarComponentProps {

@@ -83,12 +83,12 @@ const NavbarComponent: React.FC<NavbarComponentProps> = ({
   let items = [
     ...(role === "Admin"
       ? [
-          {
-            label: "Quản lí",
-            icon: "pi pi-check",
-            command: (event: any) => router.push("/dashboard"),
-          },
-        ]
+        {
+          label: "Quản lí",
+          icon: "pi pi-check",
+          command: (event: any) => router.push("/dashboard"),
+        },
+      ]
       : []),
     {
       label: "Lịch sử đặt phòng",
@@ -124,9 +124,8 @@ const NavbarComponent: React.FC<NavbarComponentProps> = ({
         setData(res?.data?.content);
         setRead(res?.data);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   }, []);
-  console.log(data);
 
   return (
     <>
