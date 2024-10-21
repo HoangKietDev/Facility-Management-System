@@ -6,6 +6,7 @@ import categoryService from "./category.service.js";
 import facilityService from "./facility.service.js";
 import fileService from "./file.service.js";
 import logService from "./log.service.js";
+import commentService from "./comment.service.js";
 
 export {
     userService,
@@ -15,5 +16,6 @@ export {
     categoryService,
     facilityService,
     fileService,
-    logService
+    logService,
+    commentService
 }

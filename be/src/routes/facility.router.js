@@ -12,9 +12,9 @@ facilityRouter.post("/create",
         authJWT.checkRole("Admin"),
         validator.validatorFormData("img", true),
         body("name").notEmpty().withMessage("Name of facility can not be null"),
-        body("name").isLength({max: 100}).withMessage("Max length of name is 100"),
+        body("name").isLength({ max: 100 }).withMessage("Max length of name is 100"),
         body("location").notEmpty().withMessage("Location of facility can not be empty"),
-        body("location").isLength({max: 1000}).withMessage("Max length of name is 1000"),
+        body("location").isLength({ max: 1000 }).withMessage("Max length of name is 1000"),
         validator.checkError
     ],
     facilityController.create);
@@ -27,14 +27,14 @@ facilityRouter.put("/update",
         authJWT.checkRole("Admin"),
         validator.validatorFormData("img", false),
         body("name").notEmpty().withMessage("Name of facility can not be null"),
-        body("name").isLength({max: 100}).withMessage("Max length of name is 100"),
+        body("name").isLength({ max: 100 }).withMessage("Max length of name is 100"),
         body("location").notEmpty().withMessage("Location of facility can not be empty"),
-        body("location").isLength({max: 1000}).withMessage("Max length of name is 1000"),
+        body("location").isLength({ max: 1000 }).withMessage("Max length of name is 1000"),
         validator.checkError
     ],
     facilityController.update);
 facilityRouter.delete("/delete", [authJWT.verifyToken, authJWT.checkRole("Admin")], facilityController.changeStatus);
 facilityRouter.get("/stastic-by-category", [authJWT.verifyToken], facilityController.getListFacilityByCategory);
- 
+
 
 export default facilityRouter;
