@@ -106,8 +106,6 @@ export default function Home() {
       .catch((error) => {
         console.error(error);
       });
-    // console.log(cate);
-    // console.log(faci);
   }, []);
 
   useEffect(() => {
@@ -236,9 +234,8 @@ export default function Home() {
               .map((data: any) => {
                 return (
                   <div
-                    className={`relative basis-1/3 text-center h-72  cursor-pointer m-5 z-50 shadow-xl border rounded-lg ${
-                      data.length === 1 ? "w-5 flex justify-center" : ""
-                    }`}
+                    className={`relative basis-1/3 text-center h-72  cursor-pointer m-5 z-50 shadow-xl border rounded-lg ${data.length === 1 ? "w-5 flex justify-center" : ""
+                      }`}
                     onClick={() => router.push("/detail/" + data._id)}
                   >
                     <Image
@@ -285,11 +282,10 @@ export default function Home() {
                 {messages.map((message, index) => (
                   <div
                     key={index}
-                    className={`text-sm p-2 rounded-lg ${
-                      message.sender === "right"
+                    className={`text-sm p-2 rounded-lg ${message.sender === "right"
                         ? "bg-blue-100 self-end"
                         : "bg-gray-100 self-start"
-                    }`}
+                      }`}
                   >
                     {message.text}
                   </div>

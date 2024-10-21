@@ -64,7 +64,6 @@ const checkCommentPermisson = async ({ facilityId, userId }) => {
         const currentDate = new Date();
         const checkBooking = await Booking.findOne({ facilityId, booker: userId, status: 2, isComment: false, startDate: { $lte: currentDate } });
         const totalComment = await Booking.countDocuments({ facilityId, booker: userId, status: 2, isComment: false, startDate: { $lte: currentDate } });
-        console.log("Current Date:", currentDate);
         if (!checkBooking) {
             return {
                 statusCode: 0,
