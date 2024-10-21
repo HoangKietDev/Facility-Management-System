@@ -4,6 +4,7 @@ import rolerRouter from "./role.router.js";
 import bookingRouter from './booking.router.js';
 import notificationRouter from './notification.router.js';
 import categoryRouter from './category.router.js';
+import facilityRouter from './facility.router.js';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../utils/swagger.json' assert { type: 'json' };
 
@@ -15,5 +16,6 @@ router.use("/role", rolerRouter);
 router.use("/booking", bookingRouter);
 router.use("/notification", notificationRouter);
 router.use("/category", categoryRouter);
+router.use("/facility", facilityRouter);
 
 export default router; 

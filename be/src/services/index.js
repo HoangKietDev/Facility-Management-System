@@ -3,11 +3,17 @@ import roleService from "./role.service.js";
 import bookingService from "./booking.service.js";
 import notificationService from "./notification.service.js";
 import categoryService from "./category.service.js";
+import facilityService from "./facility.service.js";
+import fileService from "./file.service.js";
+import logService from "./log.service.js";
 
 export {
     userService,
     roleService,
     bookingService,
     notificationService,
-    categoryService
+    categoryService,
+    facilityService,
+    fileService,
+    logService
 }
