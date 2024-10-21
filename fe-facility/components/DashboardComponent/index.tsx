@@ -12,7 +12,7 @@ import {
   UserOutlined,
   FileZipOutlined,
 } from "@ant-design/icons";
-// import Analysist from "./Analysist";
+import Analysist from "./Analysist";
 // import ManageFacilites from "./ManageFacilities";
 // import ManageBookingRequest from "./ManageBookingRequest";
 import ManageAccount from "./ManageAccount";
@@ -110,8 +110,8 @@ const DashboardComponent: React.FC = () => {
         />
       </div>
       <div className="flex-grow">
-        {/* {key === "1" && <Analysist />}
-        {key === "2" && <ManageFacilites />}
+        {key === "1" && <Analysist />}
+        {/* {key === "2" && <ManageFacilites />}
         {key === "3" && <ManageBookingRequest />}
         {key === "7" && <ManageBookingRequestAccept />}
         {key === "8" && <ManageBookingRequestReject />}
