@@ -20,7 +20,7 @@ import RecycleFacilities from "./Recycle";
 import CategoryComponent from "../CategoryComponent";
 import ManageBookingRequestAccept from "../ManageBookingRequestAccept";
 import ManageBookingRequestReject from "../ManageBookingRequestReject";
-// import ManageBookingRequestExpired from "../ManageBookingRequestExpired";
+import ManageBookingRequestExpired from "../ManageBookingRequestExpired";
 
 import { StorageService } from "../../services/storage";
 import { useRouter } from "next/navigation";
@@ -115,7 +115,7 @@ const DashboardComponent: React.FC = () => {
         {key === "3" && <ManageBookingRequest />}
         {key === "7" && <ManageBookingRequestAccept />}
         {key === "8" && <ManageBookingRequestReject />}
-        {/* {key === "9" && <ManageBookingRequestExpired />} */}
+        {key === "9" && <ManageBookingRequestExpired />}
         {key === "4" && <ManageAccount />}
         {key === "5" && <RecycleFacilities />}
         {key === "6" && <CategoryComponent />}
