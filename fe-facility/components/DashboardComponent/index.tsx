@@ -16,11 +16,11 @@ import Analysist from "./Analysist";
 // import ManageFacilites from "./ManageFacilities";
 // import ManageBookingRequest from "./ManageBookingRequest";
 import ManageAccount from "./ManageAccount";
-// import RecycleFacilities from "./Recycle";
-// import CategoryComponent from "../CategoryComponent";
-// import ManageBookingRequestAccept from "../ManageBookingRequestAccept";
-// import ManageBookingRequestReject from "../ManageBookingRequestReject";
-// import ManageBookingRequestExpired from "../ManageBookingRequestExpired";
+import RecycleFacilities from "./Recycle";
+import CategoryComponent from "../CategoryComponent";
+import ManageBookingRequestAccept from "../ManageBookingRequestAccept";
+import ManageBookingRequestReject from "../ManageBookingRequestReject";
+import ManageBookingRequestExpired from "../ManageBookingRequestExpired";
 
 import { StorageService } from "../../services/storage";
 import { useRouter } from "next/navigation";
@@ -117,8 +117,8 @@ const DashboardComponent: React.FC = () => {
         {key === "8" && <ManageBookingRequestReject />}
         {key === "9" && <ManageBookingRequestExpired />} */}
         {key === "4" && <ManageAccount />}
-        {/* {key === "5" && <RecycleFacilities />} */}
-        {/* {key === "6" && <CategoryComponent />} */}
+        {key === "5" && <RecycleFacilities />}
+        {key === "6" && <CategoryComponent />}
         {/* 6 2 3 7 8 */}
       </div>
     </div>
