@@ -1,3 +1,4 @@
+
 import Facility from "../models/Facility.js";
 
 const findAll = async () => {
@@ -34,4 +35,5 @@ export default {
     findOne,
     findPagination,
     findFacility
+
 }

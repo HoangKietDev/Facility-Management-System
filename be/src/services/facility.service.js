@@ -1,7 +1,8 @@
+
 import { SCORE_ASC, SCORE_DESC, TOTAL_BOOKED_ASC, TOTAL_BOOKED_DESC } from "../Enum/SortFacility.js";
 import Booking from "../models/Booking.js";
 import Category from "../models/Category.js";
-import Comment from "../models/Comment.js";
+// import Comment from "../models/Comment.js";
 import Facility from "../models/Facility.js"
 import facilityRepository from "../repositories/facility.repository.js";
 import { bookingService, categoryService, fileService, logService } from "../services/index.js"
