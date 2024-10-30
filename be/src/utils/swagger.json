@@ -7,7 +7,7 @@
   },
   "host": "localhost:5152",
   "basePath": "/",
-  "tag": [
+  "tags": [
       {
           "name": "user",
           "description": "Everything about user"
@@ -54,8 +54,8 @@
                       "name": "id",
                       "in": "path",
                       "description": "ID of user to get detail",
-                      "require": true,
-                      "type": "String"
+                      "required": true,
+                      "type": "string"
                   }
               ],
               "produces": [
@@ -77,15 +77,15 @@
                   {
                       "name": "id",
                       "in": "path",
-                      "description": "ID of user to get detail",
-                      "require": true,
-                      "type": "String"
+                      "description": "ID of user to update",
+                      "required": true,
+                      "type": "string"
                   },
                   {
                       "in": "body",
                       "name": "body",
-                      "description": "User object that need to be update",
-                      "require": true,
+                      "description": "User object that need to be updated",
+                      "required": true,
                       "schema": {
                           "$ref": "#/definitions/User"
                       }
@@ -106,14 +106,14 @@
               "tags": [
                   "facility"
               ],
-              "summary": "Create an facility",
+              "summary": "Create a facility",
               "description": "Create new facility",
               "parameters": [
                   {
                       "in": "body",
                       "name": "body",
-                      "description": "Facility object that need to be create",
-                      "require": true,
+                      "description": "Facility object that need to be created",
+                      "required": true,
                       "schema": {
                           "$ref": "#/definitions/Facility"
                       }
@@ -125,6 +125,35 @@
               "responses": {
                   "200": {
                       "description": "Facility created"
+                  }
+              }
+          }
+      },
+      "/facility/import": {
+          "post": {
+              "tags": [
+                  "facility"
+              ],
+              "summary": "Import facilities",
+              "description": "Import facilities from an Excel file",
+              "parameters": [
+                  {
+                      "in": "formData",
+                      "name": "file",
+                      "description": "Excel file containing facility data",
+                      "required": true,
+                      "type": "file"
+                  }
+              ],
+              "produces": [
+                  "application/json"
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Facilities imported successfully"
+                  },
+                  "400": {
+                      "description": "Invalid file format or error during import"
                   }
               }
           }
@@ -141,7 +170,7 @@
                       "in": "body",
                       "name": "body",
                       "description": "Name of category",
-                      "require": true,
+                      "required": true,
                       "schema": {
                           "$ref": "#/definitions/Category"
                       }
@@ -163,13 +192,13 @@
                   "category"
               ],
               "summary": "Get list category",
-              "description": "Get all category",
+              "description": "Get all categories",
               "produces": [
                   "application/json"
               ],
               "responses": {
                   "200": {
-                      "description": "List faclities"
+                      "description": "List categories"
                   }
               }
           }
