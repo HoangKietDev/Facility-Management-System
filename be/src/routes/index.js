@@ -8,7 +8,8 @@ import facilityRouter from './facility.router.js';
 import swaggerUi from 'swagger-ui-express';
 import commentRouter from './comment.router.js';
 import swaggerDocument from '../utils/swagger.json' assert { type: 'json' };
-
+import chatRouter from './chat.router.js';
+import logRouter from './log.router.js';
 const router = express.Router();
 
 router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
@@ -19,6 +20,7 @@ router.use("/notification", notificationRouter);
 router.use("/category", categoryRouter);
 router.use("/facility", facilityRouter);
 router.use("/comment", commentRouter);
-
+router.use("/chat", chatRouter);
+router.use("/log", logRouter);
 
 export default router; 
