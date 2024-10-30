@@ -7,6 +7,7 @@ import { Pagination, PaginationProps, Tooltip } from "antd";
 import { useEffect, useState } from "react";
 import { getAllBooking } from "../../services/booking.api";
 import { ProgressSpinner } from "primereact/progressspinner";
+import { log } from "console";
 
 export default function ManageBookingRequestAccept() {
   const [bookingData, setBookingData] = useState<any[]>([]);
@@ -62,13 +63,37 @@ export default function ManageBookingRequestAccept() {
       });
   };
 
-  function formatDate(dateString: any) {
-    const dateTimeParts = dateString.split("T");
-    const datePart = dateTimeParts[0];
-    const timePart = dateTimeParts[1].substring(0, 8); // Lấy chỉ thời gian, bỏ qua phần mili giây và múi giờ
+//   function formatDate(dateString: any) {
+//     // const dateTimeParts = dateString?.split("T");
+//     // const datePart = dateTimeParts[0];
+//     const dateTimeParts = dateString.split("T");
+// const datePart = dateTimeParts[0];
+//     console.log(dateTimeParts);
+//     const timePart = dateTimeParts[1].substring(0, 8); // Lấy chỉ thời gian, bỏ qua phần mili giây và múi giờ
 
-    return `${timePart} ${datePart}`;
+//     return `${timePart} ${datePart}`;
+//   }
+
+function formatDate(dateString: any) {
+  // Kiểm tra nếu dateString không tồn tại hoặc không phải là chuỗi hợp lệ
+  if (!dateString || typeof dateString !== 'string') {
+      console.error('Invalid date string:', dateString);
+      return 'Invalid date';
   }
+
+  const dateTimeParts = dateString.split("T");
+
+  // Kiểm tra nếu mảng dateTimeParts không có ít nhất 2 phần tử
+  if (dateTimeParts.length < 2) {
+      console.error('Invalid date-time format:', dateString);
+      return 'Invalid format';
+  }
+
+  const datePart = dateTimeParts[0];
+  const timePart = dateTimeParts[1].substring(0, 8); // Lấy chỉ thời gian, bỏ qua phần mili giây và múi giờ
+
+  return `${timePart} ${datePart}`;
+}
 
   return (
     <div>
