@@ -5,6 +5,8 @@ import bookingController from "./booking.controller.js";
 import notificationController from "./notification.controller.js";
 import facilityController from "./facility.controller.js";
 import commentController from "./comment.controller.js";
+import chatController from "./chat.controller.js";
+import logController from "./log.controller.js";
 
 export {
     userController,
@@ -14,4 +16,6 @@ export {
     categoryController,
     facilityController,
     commentController,
+    chatController,
+    logController
 }

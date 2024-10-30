@@ -7,6 +7,7 @@ import facilityService from "./facility.service.js";
 import fileService from "./file.service.js";
 import logService from "./log.service.js";
 import commentService from "./comment.service.js";
+import chatService from "./chat.service.js";
 
 export {
     userService,
@@ -17,5 +18,6 @@ export {
     facilityService,
     fileService,
     logService,
-    commentService
+    commentService,
+    chatService
 }
