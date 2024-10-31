@@ -1108,7 +1108,7 @@ export default function ManageFacilities() {
         </p>
         <div className="flex justify-end">
           <Button key="back" onClick={handleCancelInactive}>
-            Cancle
+            Cancel
           </Button>
           <Button className="bg-blue-500 text-white" onClick={handleOkInactive}>
             OK
