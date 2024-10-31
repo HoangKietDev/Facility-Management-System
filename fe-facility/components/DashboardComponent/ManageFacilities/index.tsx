@@ -889,6 +889,7 @@ export default function ManageFacilities() {
             <div className="mb-2">
               <label htmlFor="category">Phân loại</label>
               <select
+                disabled = {true}
                 value={dataUpdaate?.category?._id}
                 id="category"
                 className={`w-full shadow-none p-3 border ${
