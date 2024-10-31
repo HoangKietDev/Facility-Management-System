@@ -93,7 +93,7 @@ const infoBooking = (data: any,router : any) => {
             : data?.status === 3
             ? "Bị từ chối yêu cầu đặt phòng"
             : data?.status === 4
-            ? "Qúa hạn xử lí"
+            ? "Quá hạn xử lí"
             : data?.status === 5
             ? "Được duyệt nhưng chưa sử dụng"
             : ""}
@@ -269,17 +269,7 @@ export default function HistoryBookingPage() {
         </div>
 
         <div className="flex justify-center gap-5 my-11">
-          <div className="">
-            {/* <div className="w-full relative">
-            <div className="absolute right-28"> */}
-            <span className="flex items-center text-gray-600">
-              <FontAwesomeIcon icon={faHourglass} spin />
-              <span>&nbsp;&nbsp;Qúa hạn xử lí</span>
-            </span>
-            {/* </div>
-          </div> */}
-          </div>
-          <div className="">
+        <div className="">
             {/* <div className="w-full relative"> */}
             {/* <div className="absolute right-28"> */}
             <span className="flex items-center text-black">
@@ -290,14 +280,14 @@ export default function HistoryBookingPage() {
             {/* </div> */}
           </div>
           <div className="">
-            {/* <div className="w-full relative"> */}
-            {/* <div className="absolute right-28"> */}
+            {/* <div className="w-full relative">
+            <div className="absolute right-28"> */}
             <span className="flex items-center text-green-600">
-              <FontAwesomeIcon icon={faSpinner} spin />
-              <span>&nbsp;&nbsp;Được duyệt nhưng chưa sử dụng</span>
+              <FontAwesomeIcon className="text-xl " icon={faCheck} />
+              <span>&nbsp;&nbsp;Đã sử dụng</span>
             </span>
-            {/* </div> */}
-            {/* </div> */}
+            {/* </div>
+          </div> */}
           </div>
           <div className="">
             {/* <div className="w-full relative">
@@ -309,19 +299,27 @@ export default function HistoryBookingPage() {
             {/* </div>
           </div> */}
           </div>
-
           <div className="">
             {/* <div className="w-full relative">
             <div className="absolute right-28"> */}
-            <span className="flex items-center text-green-600">
-              <FontAwesomeIcon className="text-xl " icon={faCheck} />
-              <span>&nbsp;&nbsp;Đã sử dụng</span>
+            <span className="flex items-center text-gray-600">
+              <FontAwesomeIcon icon={faHourglass} spin />
+              <span>&nbsp;&nbsp;Quá hạn xử lí</span>
             </span>
             {/* </div>
           </div> */}
           </div>
+          <div className="">
+            {/* <div className="w-full relative"> */}
+            {/* <div className="absolute right-28"> */}
+            <span className="flex items-center text-green-600">
+              <FontAwesomeIcon icon={faSpinner} spin />
+              <span>&nbsp;&nbsp;Được duyệt nhưng chưa sử dụng</span>
+            </span>
+            {/* </div> */}
+            {/* </div> */}
+          </div>
         </div>
-
         <div className="mx-56 mt-5 flex items-center justify-center flex-wrap gap-10 pb-10">
           {data?.map((d, index) => {
             const status = d?.status;
