@@ -5,6 +5,11 @@ const login = async (req, res) => {
     const credentital = req.body.credential;
     try {
         const response = await userService.login(credentital);
+
+        if (response?.token?.token) {
+            console.log("Generated Token:", response.token.token);
+        }
+
         const statusCode = response.statusCode == 1 ? 200 : 400;
         return res.status(statusCode).json(response);
     } catch (error) {
