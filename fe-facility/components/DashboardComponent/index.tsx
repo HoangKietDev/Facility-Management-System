@@ -13,14 +13,14 @@ import {
   FileZipOutlined,
 } from "@ant-design/icons";
 import Analysist from "./Analysist";
-// import ManageFacilites from "./ManageFacilities";
-// import ManageBookingRequest from "./ManageBookingRequest";
+import ManageFacilites from "./ManageFacilities";
+import ManageBookingRequest from "./ManageBookingRequest";
 import ManageAccount from "./ManageAccount";
-// import RecycleFacilities from "./Recycle";
-// import CategoryComponent from "../CategoryComponent";
-// import ManageBookingRequestAccept from "../ManageBookingRequestAccept";
-// import ManageBookingRequestReject from "../ManageBookingRequestReject";
-// import ManageBookingRequestExpired from "../ManageBookingRequestExpired";
+import RecycleFacilities from "./Recycle";
+import CategoryComponent from "../CategoryComponent";
+import ManageBookingRequestAccept from "../ManageBookingRequestAccept";
+import ManageBookingRequestReject from "../ManageBookingRequestReject";
+import ManageBookingRequestExpired from "../ManageBookingRequestExpired";
 
 import { StorageService } from "../../services/storage";
 import { useRouter } from "next/navigation";
@@ -111,14 +111,14 @@ const DashboardComponent: React.FC = () => {
       </div>
       <div className="flex-grow">
         {key === "1" && <Analysist />}
-        {/* {key === "2" && <ManageFacilites />}
+         {key === "2" && <ManageFacilites />}
         {key === "3" && <ManageBookingRequest />}
         {key === "7" && <ManageBookingRequestAccept />}
         {key === "8" && <ManageBookingRequestReject />}
-        {key === "9" && <ManageBookingRequestExpired />} */}
+        {key === "9" && <ManageBookingRequestExpired />} 
         {key === "4" && <ManageAccount />}
-        {/* {key === "5" && <RecycleFacilities />} */}
-        {/* {key === "6" && <CategoryComponent />} */}
+        {key === "5" && <RecycleFacilities />}
+        {key === "6" && <CategoryComponent />}
         {/* 6 2 3 7 8 */}
       </div>
     </div>

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import Logo from "../../public/icons8-logo.svg";
+import Logo from "../../public/Logo_facility.svg";
 import Image from "next/image";
 import { Badge } from "primereact/badge";
 import { useRouter } from "next/navigation";
@@ -14,6 +14,7 @@ import {
   readNotification,
 } from "../../services/notification.api";
 import { set } from "zod";
+import { Flex } from "antd";
 
 interface NavbarComponentProps {
   colorNavbarOne: string;
@@ -83,12 +84,12 @@ const NavbarComponent: React.FC<NavbarComponentProps> = ({
   let items = [
     ...(role === "Admin"
       ? [
-        {
-          label: "Quản lí",
-          icon: "pi pi-check",
-          command: (event: any) => router.push("/dashboard"),
-        },
-      ]
+          {
+            label: "Quản lí",
+            icon: "pi pi-check",
+            command: (event: any) => router.push("/dashboard"),
+          },
+        ]
       : []),
     {
       label: "Lịch sử đặt phòng",
@@ -124,7 +125,7 @@ const NavbarComponent: React.FC<NavbarComponentProps> = ({
         setData(res?.data?.content);
         setRead(res?.data);
       })
-      .catch((err) => { });
+      .catch((err) => {});
   }, []);
 
   return (
@@ -137,18 +138,20 @@ const NavbarComponent: React.FC<NavbarComponentProps> = ({
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          paddingTop: "3vh",
-          paddingBottom: "3vh",
+          paddingTop: "1vh", // Giảm giá trị để logo nằm giữa
+          paddingBottom: "1vh", // Giảm giá trị để logo nằm giữa
           transition: "0.5s ease-in-out", // Optional: Add a transition effect
         }}
         className={`${scrolling ? colorNavbarOne : colorNavbarTwo} h-20 w-full`}
       >
         <div
-          style={{ marginLeft: "3vw", zIndex: 100 }}
-          className="cursor-pointer"
+          style={{ marginLeft: "3vw", zIndex: 100, display: "flex", alignItems: "center" }}
+          className="logo-container cursor-pointer"
           onClick={() => router.push("/")}
         >
-          <Image src={Logo} width={50} height={50} alt="logo" />
+          <Image src={Logo} width={125} height={50} style={{
+            marginTop: "35px"
+          }} alt="logo" />
         </div>
         <div
           style={{
@@ -175,7 +178,9 @@ const NavbarComponent: React.FC<NavbarComponentProps> = ({
                   <i
                     className="pi pi-comment p-over lay-badge"
                     style={{ fontSize: "1.5rem", marginRight: "3rem" }}
-                    onClick={() => { window.location.href = "/chat"; }}
+                    onClick={() => {
+                      window.location.href = "/chat";
+                    }}
                   ></i>
                 )}
                 <i

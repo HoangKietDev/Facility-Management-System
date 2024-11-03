@@ -85,8 +85,8 @@ export function updateStatusFaci(id:string){
   const token = tokenWithQuotes ? tokenWithQuotes.replace(/['"]+/g, "") : "";
   const headers = token ? { Authorization: `Bearer ${token}` } : {};
   return restClient({
-    url: "facility/changeStatus",
-    method: "PUT",
+    url: "facility/delete",
+    method: "DELETE",
     params : {id},
     headers
   });

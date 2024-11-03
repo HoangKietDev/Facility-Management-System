@@ -123,11 +123,11 @@ export default function TableVoted() {
     getListDashboard().then(
       (res: any) => {
         console.log("====================================");
-        console.log("res::", res.data.items);
+        // console.log("res::", res.data.items);
         console.log("====================================");
-        setListData(res.data.items);
-        setTotalPage(res.data.totalPage);
-        setActivePage(res.data.activePage);
+        setListData(res?.data?.items);
+        setTotalPage(res?.data?.totalPage);
+        setActivePage(res?.data?.activePage);
       },
       (err) => {
         setListData([]);

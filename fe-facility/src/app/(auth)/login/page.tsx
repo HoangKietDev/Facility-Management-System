@@ -4,8 +4,8 @@ import LoginComponent from "../../../../components/LoginComponent";
 import Link from "next/link";
 import Logo from "../../../../public/icons8-logo.svg";
 import { useState, useEffect } from "react";
-// import { getCategory } from "../../../../services/category.api";
-// import { StorageService } from "../../../../services/storage";
+import { getCategory } from "../../../../services/category.api";
+import { StorageService } from "../../../../services/storage";
 import { useRouter } from "next/navigation";
 import { Tooltip } from "antd";
 import { Carousel, CarouselResponsiveOption } from "primereact/carousel";
@@ -30,14 +30,14 @@ export default function Login() {
   const router = useRouter();
 
   useEffect(() => {
-    // if (StorageService.isLoggedIn() === true) {
-    //   router.push("/");
-    // }
-    // getCategory(null, null, 10000000000000)
-    //   .then((response: any) => {
-    //     setCate(response.data.item);
-    //   })
-    //   .catch((error) => console.error("Error fectching Category"));
+    if (StorageService.isLoggedIn() === true) {
+      router.push("/");
+    }
+    getCategory(null, null, 10000000000000)
+      .then((response: any) => {
+        setCate(response.data.item);
+      })
+      .catch((error) => console.error("Error fectching Category"));
   }, []);
 
   const productTemplate = (cate: Category) => {
@@ -74,7 +74,7 @@ export default function Login() {
           <Link href={"/"}>
             <Image
               src={Logo}
-              width={60}
+              width={150}
               height={60}
               alt="logo"
               className="mt-2 ml-5 rounded-full cursor-pointer text-red-500"

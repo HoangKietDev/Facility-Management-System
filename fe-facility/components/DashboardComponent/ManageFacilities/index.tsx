@@ -148,6 +148,8 @@ export default function ManageFacilities() {
   const [isModalOpenChangeInactive, setIsModalOpenChangeInactive] =
     useState(false);
 
+    const [file, setFile] = useState<File | null>(null);
+
   const showModalInactive = () => {
     setIsModalOpenChangeInactive(true);
   };
@@ -417,22 +419,30 @@ export default function ManageFacilities() {
       }
       updateFacility(formData)
         .then((res) => {
-          handleCancelUpdate();
-          resetUpdate();
-          showSuccessCategory("Update facility successfully !!!");
-          setisLoadingUpdateFormCategory(false);
-          setImgUpdate(null);
-          getFacilities(activePage, null, "").then(
-            (res: any) => {
-              setListFacility(res.data.items);
-              setTotalPage(res.data.totalPage);
-            },
-            (err) => {
-              setActivePage(1);
-              setTotalPage(0);
-              console.log(err);
-            }
-          );
+          if (res?.status === 200) {
+            handleCancelUpdate();
+            resetUpdate();
+            showSuccessCategory("Update facility successfully !!!");
+            setisLoadingUpdateFormCategory(false);
+            setImgUpdate(null);
+            getFacilities(activePage, null, "").then(
+                (res) => {
+                    setListFacility(res?.data.items);
+                    setTotalPage(res?.data.totalPage);
+                },
+                (err) => {
+                    setActivePage(1);
+                    setTotalPage(0);
+                    console.log(err);
+                }
+            );
+        } else {
+            // Xử lý khi mã trạng thái không phải là 200
+            showErrorCategory(
+               res?.data.message || "Facility name Exist"
+            );
+            setisLoadingUpdateFormCategory(false);
+        }
         })
         .catch((err) => {
           handleCancelUpdate();
@@ -517,6 +527,44 @@ export default function ManageFacilities() {
     // setIsSpinning(false);
   };
 
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = event.target.files?.[0];
+    if (selectedFile) {
+      setFile(selectedFile);
+    }
+  };
+
+  const handleExcelSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // Ngăn chặn hành động gửi biểu mẫu mặc định
+  
+    // Kiểm tra xem có file đã được chọn hay không
+    if (!file) {
+      showErrorCategory('Please select a file.')
+      return;
+    }
+  
+    const formData = new FormData();
+    formData.append('file', file); // Thêm file vào FormData
+  
+    try {
+      const response = await fetch('http://localhost:5152/facility/import', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        showSuccessCategory("Import facility successfully !!!");
+        window.location.reload();
+      }
+    } catch (error) {
+      // Xử lý lỗi khi gửi file
+      console.error('Error uploading file:', error);
+      showErrorCategory("Import facility error !!!");
+    }
+  };
+  
+
+
   return (
     <>
       <div className="">
@@ -546,6 +594,29 @@ export default function ManageFacilities() {
                   onChange={(e) => handleSearch(e.target.value)}
                 />
               </div>
+              <div className="py-2 flex items-center justify-end bg-blue-100">
+              <Tooltip title="Import nhiều phòng">
+              <div className="">
+                <div>
+                <form onSubmit={handleExcelSubmit} className="">
+        <input
+          type="file"
+          id="file"
+          name="file"
+          accept=".xlsx, .xls"
+          onChange={handleFileChange}
+          required
+        />
+        <button type='submit' className="rounded-md bg-blue-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-blue-700 focus:shadow-none active:bg-blue-700 hover:bg-blue-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2">
+  Upload
+</button>
+      </form>
+                </div>
+
+    </div>
+                </Tooltip>
+              </div>
+              
             </div>
             <table>
               <thead className="border">
@@ -826,6 +897,7 @@ export default function ManageFacilities() {
             <div className="mb-2">
               <label htmlFor="category">Phân loại</label>
               <select
+                // disabled = {true}
                 value={dataUpdaate?.category?._id}
                 id="category"
                 className={`w-full shadow-none p-3 border ${
@@ -1045,7 +1117,7 @@ export default function ManageFacilities() {
         </p>
         <div className="flex justify-end">
           <Button key="back" onClick={handleCancelInactive}>
-            Cancle
+            Cancel
           </Button>
           <Button className="bg-blue-500 text-white" onClick={handleOkInactive}>
             OK
