@@ -521,7 +521,7 @@ export default function ManageFacilities() {
         })
         .catch((err) => {
           // setIsSpinning(false);
-          showErrorCategory("Change status failed !!!");
+          showErrorCategory(err.response?.data?.message);
         });
     }
     // setIsSpinning(false);
