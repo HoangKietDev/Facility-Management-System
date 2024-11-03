@@ -171,20 +171,7 @@ export default function ManageBookingRequest() {
       .catch((err) => {});
   };
 
-  // const handleChange = (data: any) => {
-  //   setSelectedValue(data);
-  //   getAllBooking(1, data, 1)
-  //     .then((res) => {
-  //       setBookingData(res?.data?.booking);
-  //       setTotalPage(res?.data?.totalPage);
-  //       setActivePage(1);
-  //     })
-  //     .catch((err) => {
-  //       setBookingData([]);
-  //       setTotalPage(0);
-  //       setActivePage(0);
-  //     });
-  // };
+  
 
   const handleRole = (data: any) => {
     setRoleValue(data);
@@ -245,15 +232,6 @@ export default function ManageBookingRequest() {
                 />
               </div>
               <div>
-                {/* <select
-                  className="outline-none border border-gray-300 h-7 p-1 rounded-full"
-                  value={selectedValue}
-                  onChange={(e) => handleChange(e.target.value)}
-                >
-                  <option value="default">Ngày tạo</option>
-                  <option value="createdAt:asc">Ngày đặt tăng dần</option>
-                  <option value="createdAt:desc">Ngày đặt giảm dần</option>
-                </select> */}
                 <select
                   className="outline-none border border-gray-300 h-7 p-1 rounded-full"
                   value={roleValue}
@@ -317,17 +295,6 @@ export default function ManageBookingRequest() {
                         <td className="p-5 border text-center">
                           <p>{b?.slot}</p>
                         </td>
-                        {/* <td className="p-5 border text-center">
-                          <p>
-                            {b &&
-                              new Date(b?.startDate).toLocaleString("vi-VN")}
-                          </p>
-                        </td>
-                        <td className="p-5 border text-center">
-                          <p>
-                            {b && new Date(b?.endDate).toLocaleString("vi-VN")}
-                          </p>
-                        </td> */}
                         <td className="p-5 border text-center">
                           <p>{b && formatDate(b?.startDate)}</p>
                         </td>

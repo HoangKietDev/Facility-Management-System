@@ -4,7 +4,6 @@ import { authJWT } from '../middlewares/index.js'
 
 const bookingRouter = express.Router();
 
-//Người tạo: manhpd
 bookingRouter.get("/", bookingController.listPagination);
 bookingRouter.post("/", bookingController.create);
 bookingRouter.get("/dashboard/month", bookingController.Dashboard);

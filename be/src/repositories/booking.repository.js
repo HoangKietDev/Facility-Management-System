@@ -64,6 +64,7 @@ const FindAll = async (req) => {
     let arrangeSeven = [];
 
     let total = await Booking.countDocuments(query);
+
     // Lọc theo role nếu được chỉ định
     if (role) {
         const roleId = new mongoose.Types.ObjectId(role);
@@ -438,7 +439,6 @@ const CreateOne = async (req) => {
 /*
     Tên hàm: dashboard theo năm, hoặc theo tháng của booking
         Tham số: Year hoặc month 
-    Created by: Đặng Đình Quốc Khánh
 */
 const Dashboard = async (req) => {
     // arrange

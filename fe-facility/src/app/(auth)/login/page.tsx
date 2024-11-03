@@ -11,10 +11,6 @@ import { Tooltip } from "antd";
 import { Carousel, CarouselResponsiveOption } from "primereact/carousel";
 
 
-// export const metadata = {
-//   title: "Login",
-// };
-
 
 interface Category {
   _id: string;

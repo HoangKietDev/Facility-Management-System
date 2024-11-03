@@ -21,16 +21,6 @@ import multer from 'multer'; // Đảm bảo nhập multer
 const upload = multer({ dest: 'uploads/' }); // Thay đổi đường dẫn nếu cần
 
 // Route để tải lên cơ sở
-
-// app.post("/upload-facility", upload.single("file"), (req, res) => {
-//     // Lấy đường dẫn file được upload
-//     const filePath = path.join(__dirname, req.file.path);
-  
-//     // Gọi hàm để import dữ liệu từ file Excel vào MongoDB
-//     importExcelToDb(filePath)
-//       .then(() => res.send("Import thành công vào MongoDB"))
-//       .catch((error) => res.status(500).send("Lỗi khi import: " + error));
-//   });
 // Tạo mảng chứa các time slot
 const timeSlots = [
     { startTime: STARTDATE_SLOT1, endTime: ENDDATE_SLOT1 },
@@ -159,8 +149,8 @@ cron.schedule('30 19 * * *', async () => {
 cron.schedule('10 21 * * *', async () => {
     await bookingService.CheckUnusedBooking('Slot9');
 });
-// handling catch error
 
+// handling catch error
 app.use((req, res, next) => {
     const error = new Error('Not Found')
     error.status = 404

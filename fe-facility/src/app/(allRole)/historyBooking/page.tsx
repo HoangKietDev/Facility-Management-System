@@ -100,18 +100,6 @@ const infoBooking = (data: any,router : any) => {
         </p>
         <p>
           Thời gian đặt:{" "}
-          {/* {data?.booker.createdAt &&
-            new Date(data.booker.createdAt).toLocaleString("vi-VN", {
-              timeZone: "UTC",
-              weekday: "long",
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-              hour: "numeric",
-              minute: "numeric",
-              second: "numeric",
-            })} */}
-          {/* {formatDateBooking(data?.booker.createdAt)} */}
           {data?.createdAt && new Date(data?.createdAt).toLocaleString()}
         </p>
       </div>

@@ -8,7 +8,6 @@ const roleRouter = express.Router();
 roleRouter.get("/", roleController.FindAll);
 // view role profile
 
-// created by: manhpd
 roleRouter.get("/:id", roleController.FindOne);
 
 // Update role profile 
