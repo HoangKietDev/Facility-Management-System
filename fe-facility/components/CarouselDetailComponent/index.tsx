@@ -5,10 +5,12 @@ import { Calendar } from "primereact/calendar";
 import { Button } from "primereact/button";
 import { Carousel, CarouselResponsiveOption } from "primereact/carousel";
 import { Tag } from "primereact/tag";
+import { useRouter } from "next/navigation";
 import { ProductService } from "../../services/product/ProductService";
 import "primeflex/primeflex.css";
+
 interface Product {
-  id: string;
+  _id: string;
   code: string;
   name: string;
   description: string;
@@ -22,23 +24,30 @@ interface Product {
 
 export default function CarouselDetailComponent(props: any) {
   const [products, setProducts] = useState<Product[]>([]);
-
+  const router = useRouter();
   const productTemplate = (product: Product) => {
     return (
       <div className="relative text-center h-72  cursor-pointer m-5 z-50">
         <Image
           width={500}
           height={500}
-          src="https://picsum.photos/200/300"
+          src={product.image}
           alt={product.name}
           className="w-screen h-full rounded-lg"
         />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-white px-2 pb-2 rounded-b-lg">
-          <p className="font-bold">AL202</p>
+          <p className="font-bold">{product.name}</p>
         </div>
-        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-black hover:bg-opacity-80 p-2 rounded-full">
-          <button className="text-white px-3">Đặt chỗ</button>
-        </div>
+        {product && (
+          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-black hover:bg-opacity-80 p-2 rounded-full">
+            <button
+              onClick={() => router.push("/detail/" + product._id)}
+              className="text-white px-3"
+            >
+              Đặt chỗ
+            </button>
+          </div>
+        )}
       </div>
     );
   };

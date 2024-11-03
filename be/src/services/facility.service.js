@@ -84,6 +84,7 @@ const update = async (data, actionUser) => {
             data: existedFacility
         }
     } catch (error) {
+        console.error("Update error:", error);
         console.log(error);
         return {
             statusCode: 0,

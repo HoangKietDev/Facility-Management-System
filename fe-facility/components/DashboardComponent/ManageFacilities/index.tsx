@@ -419,22 +419,30 @@ export default function ManageFacilities() {
       }
       updateFacility(formData)
         .then((res) => {
-          handleCancelUpdate();
-          resetUpdate();
-          showSuccessCategory("Update facility successfully !!!");
-          setisLoadingUpdateFormCategory(false);
-          setImgUpdate(null);
-          getFacilities(activePage, null, "").then(
-            (res: any) => {
-              setListFacility(res.data.items);
-              setTotalPage(res.data.totalPage);
-            },
-            (err) => {
-              setActivePage(1);
-              setTotalPage(0);
-              console.log(err);
-            }
-          );
+          if (res?.status === 200) {
+            handleCancelUpdate();
+            resetUpdate();
+            showSuccessCategory("Update facility successfully !!!");
+            setisLoadingUpdateFormCategory(false);
+            setImgUpdate(null);
+            getFacilities(activePage, null, "").then(
+                (res) => {
+                    setListFacility(res?.data.items);
+                    setTotalPage(res?.data.totalPage);
+                },
+                (err) => {
+                    setActivePage(1);
+                    setTotalPage(0);
+                    console.log(err);
+                }
+            );
+        } else {
+            // Xử lý khi mã trạng thái không phải là 200
+            showErrorCategory(
+               res?.data.message || "Facility name Exist"
+            );
+            setisLoadingUpdateFormCategory(false);
+        }
         })
         .catch((err) => {
           handleCancelUpdate();
@@ -889,7 +897,7 @@ export default function ManageFacilities() {
             <div className="mb-2">
               <label htmlFor="category">Phân loại</label>
               <select
-                disabled = {true}
+                // disabled = {true}
                 value={dataUpdaate?.category?._id}
                 id="category"
                 className={`w-full shadow-none p-3 border ${
