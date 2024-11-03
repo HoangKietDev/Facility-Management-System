@@ -175,7 +175,7 @@ export default function Home() {
       handleSendMessage();
     }
   };
-  // Kết thúc chat to admin- TrungNQ
+  // Kết thúc chat to admin
 
   if (!faci || !cate) {
     return <div>loading...</div>;

@@ -145,7 +145,7 @@ const fetchData = async () => {
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               placeholder="Nhập địa chỉ..."
-              maxLength={20}
+              maxLength={50}
             />
           </div>
 

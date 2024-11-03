@@ -15,7 +15,7 @@ const LoginComponent = () => {
     toast.current.show({
       severity: "error",
       summary: "Error",
-      detail: (error as any).response?.data?.error,
+      detail: (error as any).response?.data?.message,
       life: 3000,
     });
   };
