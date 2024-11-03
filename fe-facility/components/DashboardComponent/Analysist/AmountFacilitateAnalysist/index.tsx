@@ -9,46 +9,6 @@ export default function AmountFacilitateAnlalysist() {
   const [chartData, setChartData] = useState({});
   const [chartOptions, setChartOptions] = useState({});
 
-  // useEffect(() => {
-  //   faciStatic()
-  //     .then((res : any) => {
-  //       const documentStyle = getComputedStyle(document.documentElement);
-  //       const data = {
-  //         labels: Object.keys(res.data.data),
-  //         datasets: [
-  //           {
-  //             data: Object.values(res.data.data),
-  //             backgroundColor: [
-  //               documentStyle.getPropertyValue("--blue-500"),
-  //               documentStyle.getPropertyValue("--yellow-500"),
-  //               documentStyle.getPropertyValue("--green-500"),
-  //             ],
-  //             hoverBackgroundColor: [
-  //               documentStyle.getPropertyValue("--blue-400"),
-  //               documentStyle.getPropertyValue("--yellow-400"),
-  //               documentStyle.getPropertyValue("--green-400"),
-  //             ],
-  //           },
-  //         ],
-  //       };
-  //       const options = {
-  //         plugins: {
-  //           legend: {
-  //             labels: {
-  //               usePointStyle: true,
-  //             },
-  //           },
-  //         },
-  //       };
-
-  //       setChartData(data);
-  //       setChartOptions(options);
-  //     })
-  //     .catch((err) => {
-  //       console.log("Error fetching data:", err);
-  //     });
-  // }, []);
-
   function getRandomColor() {
     // Generate random hex color
     return "#" + Math.floor(Math.random() * 16777215).toString(16);

@@ -13,7 +13,6 @@ userRouter.get("/stastic-by-role", authJWT.verifyToken, userController.getListUs
 userRouter.get("/", userController.FindAll);
 // view user profile
 
-// created by: manhpd 
 userRouter.get("/:id", userController.FindOne);
 
 // Update User profile 

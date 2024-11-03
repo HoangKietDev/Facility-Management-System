@@ -56,11 +56,6 @@ const items = [
     icon: <AppstoreOutlined />,
   },
   { key: "4", label: "Quản lý tài khoản", icon: <UserOutlined /> },
-  // {
-  //   key: "5",
-  //   label: "Thùng rác phòng và sân thể dục đã xóa",
-  //   icon: <FileZipOutlined />,
-  // },
 ];
 
 const DashboardComponent: React.FC = () => {
@@ -119,7 +114,6 @@ const DashboardComponent: React.FC = () => {
         {key === "4" && <ManageAccount />}
         {key === "5" && <RecycleFacilities />}
         {key === "6" && <CategoryComponent />}
-        {/* 6 2 3 7 8 */}
       </div>
     </div>
   );

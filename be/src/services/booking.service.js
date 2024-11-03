@@ -156,7 +156,6 @@ const FindBoookinUser = async (req) => {
 }
 
 //Các chức năng đang lỗi tại đây
-//Đã fix ngày 20/10
 const CheckExpireBooking = async () => {
     try {
         const updateResult = await Booking.updateMany(
@@ -204,7 +203,6 @@ const updateBookingWhenFacilityDelete = async (facilityId) => {
 }
 /*
 Tên hàm: lúc 12 h kiểm tra các booking nào là 5 mà đã quá ngày thì cho về là 2 
-người tạo: manhpd
 */
 const checkBookingExpire5 = async () => {
     try {
