@@ -87,9 +87,8 @@ export default function DetailPage({ params }: { params: { id: string } }) {
               src={detailData?.image}
               className="w-screen h-screen rounded-md object-center"
             />
-
             <div>
-              <div className="absolute right-20 top-1/2 transfrom -translate-y-1/2 z-50 bg-gray-200 p-5 shadow-xl rounded-lg">
+              <div className="p-5 shadow-xl rounded-lg flex space-x-10">
                 <InfomationDetailComponent
                   detailData={detailData}
                   showSuccessCategory={showSuccessCategory}
@@ -105,7 +104,7 @@ export default function DetailPage({ params }: { params: { id: string } }) {
                   showSuccessCategory={showSuccessCategory}
                 />
               </div>
-              <div>
+              <div className="mt-10">
                 {listData && listData.filter((item) => item._id !== detailData._id).length > 0 && (
                   <div className="text-center font-bold text-4xl">
                     <p>Các đề xuất dành cho bạn</p>

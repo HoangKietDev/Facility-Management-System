@@ -178,8 +178,8 @@ export default function ManageBookingRequestReject() {
                   <h1 className="font-bold text-3xl my-10">No data</h1>
                 </div>
               ) : null}
-              {totalPage > 0 && (
-                <div className="flex items-center justify-center">
+              {totalPage > 1 && (
+                <div className="flex items-center justify-center my-5">
                   <Pagination
                     current={activePage}
                     total={Number(`${totalPage}0`)}

@@ -10,6 +10,10 @@ import {
   LineChartOutlined,
   CarryOutOutlined,
   UserOutlined,
+  CheckOutlined,
+  CloseOutlined,
+  WarningOutlined,
+  MenuOutlined,
   FileZipOutlined,
 } from "@ant-design/icons";
 import Analysist from "./Analysist";
@@ -24,6 +28,7 @@ import ManageBookingRequestExpired from "../ManageBookingRequestExpired";
 
 import { StorageService } from "../../services/storage";
 import { useRouter } from "next/navigation";
+import { icon } from "@fortawesome/fontawesome-svg-core";
 
 const { SubMenu } = Menu;
 
@@ -33,27 +38,27 @@ const items = [
   {
     key: "6",
     label: "Quản lý các thể loại dịch vụ",
-    icon: <AppstoreOutlined />,
+    icon: <MenuOutlined />,
   },
   {
     key: "3",
-    label: "Duyệt yêu cầu đặt sân , phòng",
+    label: "Các yêu cầu đặt sân , phòng",
     icon: <CarryOutOutlined />,
   },
   {
     key: "7",
     label: "Các yêu cầu được duyệt",
-    icon: <AppstoreOutlined />,
+    icon: <CheckOutlined />
   },
   {
     key: "8",
-    label: "Các yêu cầu không được duyệt",
-    icon: <AppstoreOutlined />,
+    label: "Các yêu cầu bị từ chối",
+    icon: <CloseOutlined />,
   },
   {
     key: "9",
     label: "Các yêu cầu quá hạn",
-    icon: <AppstoreOutlined />,
+    icon: <WarningOutlined />,
   },
   { key: "4", label: "Quản lý tài khoản", icon: <UserOutlined /> },
 ];
@@ -106,11 +111,11 @@ const DashboardComponent: React.FC = () => {
       </div>
       <div className="flex-grow">
         {key === "1" && <Analysist />}
-         {key === "2" && <ManageFacilites />}
+        {key === "2" && <ManageFacilites />}
         {key === "3" && <ManageBookingRequest />}
         {key === "7" && <ManageBookingRequestAccept />}
         {key === "8" && <ManageBookingRequestReject />}
-        {key === "9" && <ManageBookingRequestExpired />} 
+        {key === "9" && <ManageBookingRequestExpired />}
         {key === "4" && <ManageAccount />}
         {key === "5" && <RecycleFacilities />}
         {key === "6" && <CategoryComponent />}

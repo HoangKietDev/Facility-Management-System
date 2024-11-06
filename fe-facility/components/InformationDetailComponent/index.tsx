@@ -249,7 +249,7 @@ export default function InfomationDetailComponent({
           console.log("====================================");
           setBookingUserByWeek(res.data.booking);
         },
-        (error) => {}
+        (error) => { }
       );
     }
 
@@ -290,7 +290,7 @@ export default function InfomationDetailComponent({
           console.log("====================================");
           setBookingUserByWeek(res.data.booking);
         },
-        (error) => {}
+        (error) => { }
       );
     }
 
@@ -412,7 +412,7 @@ export default function InfomationDetailComponent({
                 console.log("====================================");
                 setBookingUserByWeek(res.data.booking);
               },
-              (error) => {}
+              (error) => { }
             );
           }
         }
@@ -427,9 +427,15 @@ export default function InfomationDetailComponent({
     setOpen(false);
   };
 
+  const [showDetails, setShowDetails] = useState(false);
+
+  const toggleDetails = () => {
+    setShowDetails(!showDetails);
+  };
+
   return (
     <>
-      <div className="flex flex-col gap-10 items-center">
+      {/* <div className="flex-1 flex flex-col gap-10 items-center">
         <div className="font-bold text-5xl">{detailData?.name}</div>
         <div>
           <span className="font-bold">Phân loại :</span>{" "}
@@ -443,28 +449,30 @@ export default function InfomationDetailComponent({
             Xem thông tin chi tiết
           </Button>
         </div>
-
+      </div> */}
+      <div className="flex-1 flex flex-col gap-4 items-center">
+        <div className="font-bold text-5xl">{detailData?.name}</div>
         <div>
-          <button
-            onClick={showModal}
-            className="bg-green-500 hover:bg-green-300 text-white font-semibold px-5 py-2 rounded-md"
-          >
-            Đặt phòng
-          </button>
+          <span className="font-bold">Phân loại :</span> {detailData?.category?.categoryName}
+        </div>
+
+        {/* Hiển thị nội dung chi tiết luôn */}
+        <div className="p-4 bg-gray-100 rounded shadow-lg w-full">
+          <h2 className="font-bold text-2xl mb-2">Thông tin chi tiết</h2>
+          <div dangerouslySetInnerHTML={{ __html: detailData?.description }}></div>
         </div>
       </div>
-
       {/* modal booking */}
-      <Modal
-        className="w-fit"
-        open={open}
-        onOk={handleOk}
-        closeIcon={<></>}
-        footer={[
-          <Button key="back" onClick={handleCancel}>
-            Hủy
-          </Button>,
-        ]}
+      <div className="flex-1"
+      // className="w-fit"
+      // open={open}
+      // onOk={handleOk}
+      // closeIcon={<></>}
+      // footer={[
+      //   <Button key="back" onClick={handleCancel}>
+      //     Hủy
+      //   </Button>,
+      // ]}
       >
         <div>
           <div className="flex items-center justify-end gap-2 my-3">
@@ -537,26 +545,24 @@ export default function InfomationDetailComponent({
                           handleBooking(`Slot${i + 1}#Monday#${weekValue}`)
                         }
                         className={`p-2 rounded-full text-white px-4 
-                        ${
-                          checkValidSlotMondayUser(
-                            `Slot${i + 1}`,
-                            bookingUserByWeek
-                          ) === true
+                        ${checkValidSlotMondayUser(
+                          `Slot${i + 1}`,
+                          bookingUserByWeek
+                        ) === true
                             ? "bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50"
                             : checkValidSlotMonday(
-                                `Slot${i + 1}`,
-                                listBooking
-                              ) === true
-                            ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
-                            : "bg-blue-500 hover:bg-blue-300"
-                        }
+                              `Slot${i + 1}`,
+                              listBooking
+                            ) === true
+                              ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
+                              : "bg-blue-500 hover:bg-blue-300"
+                          }
                 
-                        ${
-                          checkValidSlotMonday(`Slot${i + 1}`, listBooking) ===
+                        ${checkValidSlotMonday(`Slot${i + 1}`, listBooking) ===
                             false && disableButtonsMonday
                             ? "bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50"
                             : "bg-blue-500 hover:bg-blue-300"
-                        }`}
+                          }`}
                       >
                         Đặt
                       </button>
@@ -576,26 +582,24 @@ export default function InfomationDetailComponent({
                           handleBooking(`Slot${i + 1}#Tuesday#${weekValue}`)
                         }
                         className={`p-2 rounded-full text-white px-4 
-                        ${
-                          checkValidSlotTuesdayUser(
-                            `Slot${i + 1}`,
-                            bookingUserByWeek
-                          ) === true
+                        ${checkValidSlotTuesdayUser(
+                          `Slot${i + 1}`,
+                          bookingUserByWeek
+                        ) === true
                             ? "bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50"
                             : checkValidSlotTuesday(
-                                `Slot${i + 1}`,
-                                listBooking
-                              ) === true
-                            ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
-                            : "bg-blue-500 hover:bg-blue-300"
-                        }
+                              `Slot${i + 1}`,
+                              listBooking
+                            ) === true
+                              ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
+                              : "bg-blue-500 hover:bg-blue-300"
+                          }
                 
-                        ${
-                          checkValidSlotTuesday(`Slot${i + 1}`, listBooking) ===
+                        ${checkValidSlotTuesday(`Slot${i + 1}`, listBooking) ===
                             false && disableButtonsTuesday
                             ? "bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50"
                             : "bg-blue-500 hover:bg-blue-300"
-                        }`}
+                          }`}
                       >
                         Đặt
                       </button>
@@ -618,28 +622,26 @@ export default function InfomationDetailComponent({
                           handleBooking(`Slot${i + 1}#Wednesday#${weekValue}`)
                         }
                         className={`p-2 rounded-full text-white px-4 
-                        ${
-                          checkValidSlotWednesdayUser(
-                            `Slot${i + 1}`,
-                            bookingUserByWeek
-                          ) === true
+                        ${checkValidSlotWednesdayUser(
+                          `Slot${i + 1}`,
+                          bookingUserByWeek
+                        ) === true
                             ? "bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50"
                             : checkValidSlotWednesday(
-                                `Slot${i + 1}`,
-                                listBooking
-                              ) === true
-                            ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
-                            : "bg-blue-500  hover:bg-blue-300"
-                        }
+                              `Slot${i + 1}`,
+                              listBooking
+                            ) === true
+                              ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
+                              : "bg-blue-500  hover:bg-blue-300"
+                          }
                 
-                        ${
-                          checkValidSlotWednesday(
+                        ${checkValidSlotWednesday(
                             `Slot${i + 1}`,
                             listBooking
                           ) === false && disableButtonsWendsday
                             ? "bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50"
                             : "bg-blue-500 hover:bg-blue-300"
-                        }`}
+                          }`}
                       >
                         Đặt
                       </button>
@@ -659,28 +661,26 @@ export default function InfomationDetailComponent({
                           handleBooking(`Slot${i + 1}#Thursday#${weekValue}`)
                         }
                         className={`p-2 rounded-full text-white px-4 
-                        ${
-                          checkValidSlotThursdayUser(
-                            `Slot${i + 1}`,
-                            bookingUserByWeek
-                          ) === true
+                        ${checkValidSlotThursdayUser(
+                          `Slot${i + 1}`,
+                          bookingUserByWeek
+                        ) === true
                             ? "bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50"
                             : checkValidSlotThursday(
-                                `Slot${i + 1}`,
-                                listBooking
-                              ) === true
-                            ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
-                            : "bg-blue-500 hover:bg-blue-300"
-                        }
+                              `Slot${i + 1}`,
+                              listBooking
+                            ) === true
+                              ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
+                              : "bg-blue-500 hover:bg-blue-300"
+                          }
                 
-                        ${
-                          checkValidSlotThursday(
+                        ${checkValidSlotThursday(
                             `Slot${i + 1}`,
                             listBooking
                           ) === false && disableButtonsThurday
                             ? "bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50"
                             : "bg-blue-500 hover:bg-blue-300"
-                        }`}
+                          }`}
                       >
                         Đặt
                       </button>
@@ -700,26 +700,24 @@ export default function InfomationDetailComponent({
                           handleBooking(`Slot${i + 1}#Friday#${weekValue}`)
                         }
                         className={`p-2 rounded-full text-white px-4 
-                        ${
-                          checkValidSlotFridayUser(
-                            `Slot${i + 1}`,
-                            bookingUserByWeek
-                          ) === true
+                        ${checkValidSlotFridayUser(
+                          `Slot${i + 1}`,
+                          bookingUserByWeek
+                        ) === true
                             ? "bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50"
                             : checkValidSlotFriday(
-                                `Slot${i + 1}`,
-                                listBooking
-                              ) === true
-                            ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
-                            : "bg-blue-500 hover:bg-blue-300"
-                        }
+                              `Slot${i + 1}`,
+                              listBooking
+                            ) === true
+                              ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
+                              : "bg-blue-500 hover:bg-blue-300"
+                          }
                 
-                        ${
-                          checkValidSlotFriday(`Slot${i + 1}`, listBooking) ===
+                        ${checkValidSlotFriday(`Slot${i + 1}`, listBooking) ===
                             false && disableButtonsFriday
                             ? "bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50"
                             : "bg-blue-500 hover:bg-blue-300"
-                        }`}
+                          }`}
                       >
                         Đặt
                       </button>
@@ -739,28 +737,26 @@ export default function InfomationDetailComponent({
                           handleBooking(`Slot${i + 1}#Saturday#${weekValue}`)
                         }
                         className={`p-2 rounded-full text-white px-4 
-                        ${
-                          checkValidSlotSaturdayUser(
-                            `Slot${i + 1}`,
-                            bookingUserByWeek
-                          ) === true
+                        ${checkValidSlotSaturdayUser(
+                          `Slot${i + 1}`,
+                          bookingUserByWeek
+                        ) === true
                             ? "bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50"
                             : checkValidSlotSaturday(
-                                `Slot${i + 1}`,
-                                listBooking
-                              ) === true
-                            ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
-                            : "bg-blue-500 hover:bg-blue-300"
-                        }
+                              `Slot${i + 1}`,
+                              listBooking
+                            ) === true
+                              ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
+                              : "bg-blue-500 hover:bg-blue-300"
+                          }
                 
-                        ${
-                          checkValidSlotSaturday(
+                        ${checkValidSlotSaturday(
                             `Slot${i + 1}`,
                             listBooking
                           ) === false && disableButtonsSaturday
                             ? "bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50"
                             : "bg-blue-500 hover:bg-blue-300"
-                        }`}
+                          }`}
                       >
                         Đặt
                       </button>
@@ -780,26 +776,24 @@ export default function InfomationDetailComponent({
                           handleBooking(`Slot${i + 1}#Sunday#${weekValue}`)
                         }
                         className={`p-2 rounded-full text-white px-4 
-                        ${
-                          checkValidSlotSundayUser(
-                            `Slot${i + 1}`,
-                            bookingUserByWeek
-                          ) === true
+                        ${checkValidSlotSundayUser(
+                          `Slot${i + 1}`,
+                          bookingUserByWeek
+                        ) === true
                             ? "bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50"
                             : checkValidSlotSunday(
-                                `Slot${i + 1}`,
-                                listBooking
-                              ) === true
-                            ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
-                            : "bg-blue-500 hover:bg-blue-300"
-                        }
+                              `Slot${i + 1}`,
+                              listBooking
+                            ) === true
+                              ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
+                              : "bg-blue-500 hover:bg-blue-300"
+                          }
                 
-                        ${
-                          checkValidSlotSunday(`Slot${i + 1}`, listBooking) ===
+                        ${checkValidSlotSunday(`Slot${i + 1}`, listBooking) ===
                             false && disableButtonsSunday
                             ? "bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50"
                             : "bg-blue-500 hover:bg-blue-300"
-                        }`}
+                          }`}
                       >
                         Đặt
                       </button>
@@ -814,7 +808,7 @@ export default function InfomationDetailComponent({
             </div>
           </div>
         </div>
-      </Modal>
+      </div>
     </>
   );
 }
