@@ -463,7 +463,7 @@ export default function ManageFacilities() {
 
   useLayoutEffect(() => {
     setIsSpinning(true);
-    getCategory()
+    getCategory(1, null, 100)
       .then((res: any) => {
         console.log(res);
         setListCategory(res.data.item);
@@ -637,7 +637,7 @@ export default function ManageFacilities() {
                   <th className="p-5 border ">#</th>
                   <th className="p-5 border ">Tên phòng</th>
                   <th className="p-5 border " style={{width: '250px'}}>Ảnh</th>
-                  <th className="p-5 border ">Địa chỉ</th>
+                  <th className="p-5 border ">Thể loại</th>
                   <th className="p-5 border ">Thời gian tạo</th>
                   <th className="p-5 border">Trạng thái</th>
                   <th className="p-5 border ">Lịch sử cập nhật</th>
@@ -667,8 +667,9 @@ export default function ManageFacilities() {
                         />
                       </td>
                       <td className="p-5 border text-center">
-                        <p>{c?.location}</p>
+                        <p>{c?.category?.categoryName}</p>
                       </td>
+
                       <td className="p-5 border text-center">
                         <p>{c && new Date(c.createdAt).toLocaleString()}</p>
                       </td>

@@ -3,6 +3,7 @@ import { Button, Modal, Space, Tooltip } from "antd";
 import { Calendar } from "primereact/calendar";
 import { Nullable } from "primereact/ts-helpers";
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from 'next/router'
 // import TableComponentBooked from "../TableComponentBooked";
 import { StorageService } from "../../services/storage";
 import { Toast } from "primereact/toast";
@@ -127,6 +128,11 @@ export default function InfomationDetailComponent({
     console.log("====================================");
     console.log("current day::", currentDay);
     console.log("====================================");
+    if (typeof window !== 'undefined') {
+      const currentPath = window.location.pathname + window.location.search;
+      console.log("Saving current path to localStorage:", currentPath);
+      localStorage.setItem("previousPath", currentPath);
+    }
     if (!weekValue) {
       const currentDate = new Date();
       const year = currentDate.getFullYear();
@@ -381,6 +387,13 @@ export default function InfomationDetailComponent({
     console.log("====================================");
     console.log("day::", day);
     console.log("====================================");
+
+    if (!userId) {
+      window.location.href = '/login';
+      return; // Dừng thực hiện code sau khi chuyển hướng
+    }
+
+
     addBooking(bookingBody)
       .then((res: any) => {
         if (
@@ -389,6 +402,8 @@ export default function InfomationDetailComponent({
         ) {
           showErrorCategory("Booking failed: You already have a booking");
         } else {
+          // check login, neu chua thi ve /login
+          // neu roi thi chay code
           showSuccessCategory("Booking successfully !!!");
           calendarBooking(weekValue, detailData?._id)
             .then((res: any) => {
@@ -435,21 +450,6 @@ export default function InfomationDetailComponent({
 
   return (
     <>
-      {/* <div className="flex-1 flex flex-col gap-10 items-center">
-        <div className="font-bold text-5xl">{detailData?.name}</div>
-        <div>
-          <span className="font-bold">Phân loại :</span>{" "}
-          {detailData?.category?.categoryName}
-        </div>
-        <div>
-          <Button
-            className="bg-blue-400 text-white font-semibold"
-            onClick={() => info(detailData?.description)}
-          >
-            Xem thông tin chi tiết
-          </Button>
-        </div>
-      </div> */}
       <div className="flex-1 flex flex-col gap-4 items-center">
         <div className="font-bold text-5xl">{detailData?.name}</div>
         <div>
@@ -463,17 +463,7 @@ export default function InfomationDetailComponent({
         </div>
       </div>
       {/* modal booking */}
-      <div className="flex-1"
-      // className="w-fit"
-      // open={open}
-      // onOk={handleOk}
-      // closeIcon={<></>}
-      // footer={[
-      //   <Button key="back" onClick={handleCancel}>
-      //     Hủy
-      //   </Button>,
-      // ]}
-      >
+      <div className="flex-1">
         <div>
           <div className="flex items-center justify-end gap-2 my-3">
             <span className="font-bold text-xl"> Tuần và năm </span>
