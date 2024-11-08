@@ -158,7 +158,7 @@ export default function CommentComponent({
         </div>
       )}
 
-      <div className="mt-5">
+      <div className="p-5 mt-5">
         {listComment && (
           <div>
             <div>
@@ -170,68 +170,127 @@ export default function CommentComponent({
         )}
 
         {/* comment */}
-        <div className="mt-10 grid grid-cols-2 gap-6">
+        {/* <div className="mt-10 flex flex-wrap gap-6">
           {listComment &&
             listComment.map((comment, index) => (
-              <div className="col-md-6 flex gap-5 items-center mt-5" key={index}>
-                <div>
-                  <Avatar
-                    src={comment?.userId?.avatar}
-                    size={{ xs: 14, sm: 22, md: 30, lg: 54, xl: 70, xxl: 90 }}
-                  />
-                </div>
-                <div className="border border-solid border-gray-300 p-4 rounded-xl w-full">
-                  <div className="flex gap-5">
-                    <div>
-                      <p className="font-bold">{comment.userId?.name}</p>
-                    </div>
-                    <div>
-                      <p className="text-gray-500 flex items-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          height="16"
-                          width="14"
-                          viewBox="0 0 448 512"
-                        >
-                          <path d="M96 32V64H48C21.5 64 0 85.5 0 112v48H448V112c0-26.5-21.5-48-48-48H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zM448 192H0V464c0 26.5 21.5 48 48 48H400c26.5 0 48-21.5 48-48V192z" />
-                        </svg>
-                        &nbsp;{new Date(comment?.createdAt).toLocaleString()}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="my-2">
-                    <Rating
-                      disabled
-                      cancelIcon={<></>}
-                      value={comment?.star}
-                      onChange={(e: RatingChangeEvent) =>
-                        setStarVoted(e.value !== undefined ? e.value : null)
-                      }
-                      className="shadow-none"
+              <div className="w-full md:flex-1 md:basis-1/2" key={index}>
+                <div className="flex gap-5 items-center mt-5">
+                  <div>
+                    <Avatar
+                      src={comment?.userId?.avatar}
+                      size={{ xs: 14, sm: 22, md: 30, lg: 54, xl: 70, xxl: 90 }}
                     />
                   </div>
-                  <div>
-                    <p>{comment?.content}</p>
+                  <div className="border border-solid border-gray-300 p-4 rounded-xl w-full">
+                    <div className="flex gap-5">
+                      <div>
+                        <p className="font-bold">{comment.userId?.name}</p>
+                      </div>
+                      <div>
+                        <p className="text-gray-500 flex items-center">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="16"
+                            width="14"
+                            viewBox="0 0 448 512"
+                          >
+                            <path d="M96 32V64H48C21.5 64 0 85.5 0 112v48H448V112c0-26.5-21.5-48-48-48H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zM448 192H0V464c0 26.5 21.5 48 48 48H400c26.5 0 48-21.5 48-48V192z" />
+                          </svg>
+                          &nbsp;{new Date(comment?.createdAt).toLocaleString()}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="my-2">
+                      <Rating
+                        disabled
+                        cancelIcon={<></>}
+                        value={comment?.star}
+                        onChange={(e: RatingChangeEvent) =>
+                          setStarVoted(e.value !== undefined ? e.value : null)
+                        }
+                        className="shadow-none"
+                      />
+                    </div>
+                    <div>
+                      <p>{comment?.content}</p>
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           {!listComment ||
             (totalPages === 0 && (
-              <div className="my-16">
+              <div className="my-16 w-full">
                 <Empty />
               </div>
             ))}
+        </div> */}
+        <div className="mt-10 flex justify-center">
+          <div className="grid md:grid-cols-2 gap-6 max-w-screen-lg mx-auto">
+            {listComment &&
+              listComment.map((comment, index) => (
+                <div key={index} className="border border-solid border-gray-300 p-4 rounded-xl shadow-lg">
+                  <div className="flex gap-5">
+                    <div>
+                      <Avatar
+                        src={comment?.userId?.avatar}
+                        size={{ xs: 14, sm: 22, md: 30, lg: 54, xl: 70, xxl: 90 }}
+                      />
+                    </div>
+                    <div className="w-full">
+                      <div className="flex justify-between items-center mb-2">
+                        <p className="font-bold mr-5">{comment.userId?.name}</p>
+                        <p className="text-gray-500 text-sm flex items-center">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="16"
+                            width="14"
+                            viewBox="0 0 448 512"
+                          >
+                            <path d="M96 32V64H48C21.5 64 0 85.5 0 112v48H448V112c0-26.5-21.5-48-48-48H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zM448 192H0V464c0 26.5 21.5 48 48 48H400c26.5 0 48-21.5 48-48V192z" />
+                          </svg>
+                          &nbsp;{new Date(comment?.createdAt).toLocaleString()}
+                        </p>
+                      </div>
+                      <div className="my-2">
+                        <Rating
+                          disabled
+                          cancelIcon={<></>}
+                          value={comment?.star}
+                          onChange={(e: RatingChangeEvent) =>
+                            setStarVoted(e.value !== undefined ? e.value : null)
+                          }
+                          className="shadow-none"
+                        />
+                      </div>
+                      <div>
+                        <p>{comment?.content}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            {!listComment ||
+              (totalPages === 0 && (
+                <div className="my-16 w-full">
+                  <Empty />
+                </div>
+              ))}
+          </div>
         </div>
+
+
+
+
       </div>
       {totalPages > 1 && (
-        <div className="flex items-center justify-center my-16">
+        <div className="flex items-center justify-center my-10">
           <Pagination
             defaultCurrent={activePage}
             total={Number(`${totalPages}0`)}
             onChange={onChangePage}
             showSizeChanger={false}
-           
+
           />
         </div>
       )}
