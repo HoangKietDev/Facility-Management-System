@@ -202,7 +202,7 @@ const updateBookingWhenFacilityDelete = async (facilityId) => {
     }
 }
 /*
-Tên hàm: lúc 12 h kiểm tra các booking nào là 5 mà đã quá ngày thì cho về là 2 
+Tên hàm: lúc 24 h kiểm tra các booking nào là 5 mà đã quá ngày thì cho về là 2 
 */
 const checkBookingExpire5 = async () => {
     try {

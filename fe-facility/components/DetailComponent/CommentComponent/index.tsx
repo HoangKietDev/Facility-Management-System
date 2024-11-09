@@ -264,7 +264,7 @@ export default function CommentComponent({
                         />
                       </div>
                       <div>
-                        <p>{comment?.content}</p>
+                        <p >{comment?.content}</p>
                       </div>
                     </div>
                   </div>

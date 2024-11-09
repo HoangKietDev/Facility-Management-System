@@ -342,7 +342,7 @@ const UpdateOne = async (req) => {
         req.body.timeReject = momentMinus7Hours;
     }
     const existedUser = await Booking.findByIdAndUpdate(id, req.body, { new: true }).exec();
-    const message = req.body.status === 2 ? "Yêu cầu của bạn đã được phê duyệt" : "Yêu cầu của bạn đã bị từ chối";
+    const message = req.body.status === 5 ? "Yêu cầu của bạn đã được phê duyệt" : "Yêu cầu của bạn đã bị từ chối";
     const user = await User.findById(existedUser.booker);
     const notification = {
         userId: existedUser.booker,

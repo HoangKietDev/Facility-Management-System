@@ -251,9 +251,9 @@ export default function InfomationDetailComponent({
       ).then(
         (res: any) => {
           console.log("====================================");
-          console.log("User Booking ::", res.data.booking);
+          // console.log("User Booking ::", res.data.booking);
           console.log("====================================");
-          setBookingUserByWeek(res.data.booking);
+          setBookingUserByWeek(res?.data?.booking);
         },
         (error) => { }
       );
