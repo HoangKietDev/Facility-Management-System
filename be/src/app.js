@@ -22,17 +22,17 @@ const upload = multer({ dest: 'uploads/' }); // Thay đổi đường dẫn nế
 
 // Route để tải lên cơ sở
 // Tạo mảng chứa các time slot
-const timeSlots = [
-    { startTime: STARTDATE_SLOT1, endTime: ENDDATE_SLOT1 },
-    { startTime: STARTDATE_SLOT2, endTime: ENDDATE_SLOT2 },
-    { startTime: STARTDATE_SLOT3, endTime: ENDDATE_SLOT3 },
-    { startTime: STARTDATE_SLOT4, endTime: ENDDATE_SLOT4 },
-    { startTime: STARTDATE_SLOT5, endTime: ENDDATE_SLOT5 },
-    { startTime: STARTDATE_SLOT6, endTime: ENDDATE_SLOT6 },
-    { startTime: STARTDATE_SLOT7, endTime: ENDDATE_SLOT7 },
-    { startTime: STARTDATE_SLOT8, endTime: ENDDATE_SLOT8 },
-    { startTime: STARTDATE_SLOT9, endTime: ENDDATE_SLOT9 }
-];
+// const timeSlots = [
+//     { startTime: STARTDATE_SLOT1, endTime: ENDDATE_SLOT1 },
+//     { startTime: STARTDATE_SLOT2, endTime: ENDDATE_SLOT2 },
+//     { startTime: STARTDATE_SLOT3, endTime: ENDDATE_SLOT3 },
+//     { startTime: STARTDATE_SLOT4, endTime: ENDDATE_SLOT4 },
+//     { startTime: STARTDATE_SLOT5, endTime: ENDDATE_SLOT5 },
+//     { startTime: STARTDATE_SLOT6, endTime: ENDDATE_SLOT6 },
+//     { startTime: STARTDATE_SLOT7, endTime: ENDDATE_SLOT7 },
+//     { startTime: STARTDATE_SLOT8, endTime: ENDDATE_SLOT8 },
+//     { startTime: STARTDATE_SLOT9, endTime: ENDDATE_SLOT9 }
+// ];
 
 dotenv.config()
 const app = express()
