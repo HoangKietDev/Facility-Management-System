@@ -19,11 +19,14 @@ const login = async (credential) => {
             }
 
             const profile = verificationResponse?.payload;
-            if (!isEmailInDomain(profile?.email, 'fpt.edu.vn')) {
-                throw new Error("Only FPT University people can login to this system");
-            }
+            // if (!isEmailInDomain(profile?.email, 'fpt.edu.vn')) {
+            //     return {
+            //         statusCode: 0,
+            //         message: "Only FPT University people can login to this system"
+            //     }
+            // }
             const user = await userRepository.checkUserInDB(profile);
-            if(user.status === 3){
+            if (user.status === 3) {
                 return {
                     statusCode: 0,
                     message: "Account is banned"
@@ -153,5 +156,5 @@ const getListUserByRole = async () => {
 }
 
 export default {
-    login, FindOne, UpdateOne, FindAll, findCondition,getListUserByRole
+    login, FindOne, UpdateOne, FindAll, findCondition, getListUserByRole
 }
