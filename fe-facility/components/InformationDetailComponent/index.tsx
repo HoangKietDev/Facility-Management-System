@@ -46,13 +46,13 @@ import {
 import { SlotTime } from "../../data";
 
 const weeks = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
+  "Thứ 2",
+  "Thứ 3",
+  "Thứ 4",
+  "Thứ 5",
+  "Thứ 6",
+  "Thứ 7",
+  "CN",
 ];
 const slots = [
   "Slot1",
@@ -488,14 +488,14 @@ export default function InfomationDetailComponent({
               <div className="w-1 h-4 bg-green-800"></div>
             </Tooltip>
           </div>
-          <div className="flex justify-center">
-            <table className="border">
+          <div className="flex justify-center overflow-x-auto w-full">
+            <table className="border w-full table-fixed">
               <thead>
                 <tr>
                   <th className="p-2 border"></th>
                   {weeks.map((week, i) => {
                     return (
-                      <th key={i} className="p-2 border">
+                      <th key={i} className="p-2 border text-xs sm:text-sm md:text-base lg:text-lg">
                         {week}
                       </th>
                     );
@@ -509,7 +509,7 @@ export default function InfomationDetailComponent({
                       <Tooltip title={`${SlotTime[`Slot${i + 1}`]}`}>
                         <div className="flex items-center gap-1">
                           {" "}
-                          <p className="text-xl">Slot{i + 1}</p>
+                          <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">{`Slot${i + 1}`}</p>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -534,27 +534,30 @@ export default function InfomationDetailComponent({
                         onClick={() =>
                           handleBooking(`Slot${i + 1}#Monday#${weekValue}`)
                         }
-                        className={`p-2 rounded-full text-white px-4 
+                        className={`w-full p-2 rounded-full text-white flex items-center justify-center
                         ${checkValidSlotMondayUser(
                           `Slot${i + 1}`,
                           bookingUserByWeek
                         ) === true
-                            ? "bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50"
+                            ? "w-full bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50 flex items-center justify-center"
                             : checkValidSlotMonday(
                               `Slot${i + 1}`,
                               listBooking
                             ) === true
-                              ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
-                              : "bg-blue-500 hover:bg-blue-300"
+                              ? "w-full bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50 flex items-center justify-center"
+                              : "w-full bg-blue-500 hover:bg-blue-300 items-center justify-center"
                           }
                 
                         ${checkValidSlotMonday(`Slot${i + 1}`, listBooking) ===
                             false && disableButtonsMonday
-                            ? "bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50"
-                            : "bg-blue-500 hover:bg-blue-300"
+                            ? "w-full bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50 flex items-center justify-center"
+                            : "w-full bg-blue-500 hover:bg-blue-300 flex items-center justify-center"
                           }`}
                       >
-                        Đặt
+                        <span className="hidden sm:inline">Đặt</span>
+                        <span className="inline sm:hidden">
+                          📅
+                        </span>
                       </button>
                     </td>
 
@@ -571,27 +574,31 @@ export default function InfomationDetailComponent({
                         onClick={() =>
                           handleBooking(`Slot${i + 1}#Tuesday#${weekValue}`)
                         }
-                        className={`p-2 rounded-full text-white px-4 
+                        className={`w-full p-2 rounded-full text-white flex items-center justify-center
+
                         ${checkValidSlotTuesdayUser(
                           `Slot${i + 1}`,
                           bookingUserByWeek
                         ) === true
-                            ? "bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50"
+                            ? "w-full bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50 flex items-center justify-center"
                             : checkValidSlotTuesday(
                               `Slot${i + 1}`,
                               listBooking
                             ) === true
-                              ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
-                              : "bg-blue-500 hover:bg-blue-300"
+                              ? "w-full bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50 flex items-center justify-center"
+                              : "w-full bg-blue-500 hover:bg-blue-300 flex items-center justify-center"
                           }
                 
                         ${checkValidSlotTuesday(`Slot${i + 1}`, listBooking) ===
                             false && disableButtonsTuesday
-                            ? "bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50"
-                            : "bg-blue-500 hover:bg-blue-300"
+                            ? "w-full bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50 flex items-center justify-center"
+                            : "w-full bg-blue-500 hover:bg-blue-300 flex items-center justify-center"
                           }`}
                       >
-                        Đặt
+                        <span className="hidden sm:inline">Đặt</span>
+                        <span className="inline sm:hidden">
+                          📅
+                        </span>
                       </button>
                     </td>
 
@@ -611,29 +618,32 @@ export default function InfomationDetailComponent({
                         onClick={() =>
                           handleBooking(`Slot${i + 1}#Wednesday#${weekValue}`)
                         }
-                        className={`p-2 rounded-full text-white px-4 
+                        className={`w-full p-2 rounded-full text-white flex items-center justify-center
                         ${checkValidSlotWednesdayUser(
                           `Slot${i + 1}`,
                           bookingUserByWeek
                         ) === true
-                            ? "bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50"
+                            ? "w-full bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50 flex items-center justify-center"
                             : checkValidSlotWednesday(
                               `Slot${i + 1}`,
                               listBooking
                             ) === true
-                              ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
-                              : "bg-blue-500  hover:bg-blue-300"
+                              ? "w-full bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50 flex items-center justify-center"
+                              : "w-full bg-blue-500  hover:bg-blue-300 flex items-center justify-center"
                           }
                 
                         ${checkValidSlotWednesday(
                             `Slot${i + 1}`,
                             listBooking
                           ) === false && disableButtonsWendsday
-                            ? "bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50"
-                            : "bg-blue-500 hover:bg-blue-300"
+                            ? "w-full bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50 flex items-center justify-center"
+                            : "w-full bg-blue-500 hover:bg-blue-300 flex items-center justify-center"
                           }`}
                       >
-                        Đặt
+                        <span className="hidden sm:inline">Đặt</span>
+                        <span className="inline sm:hidden">
+                          📅
+                        </span>
                       </button>
                     </td>
 
@@ -650,29 +660,32 @@ export default function InfomationDetailComponent({
                         onClick={() =>
                           handleBooking(`Slot${i + 1}#Thursday#${weekValue}`)
                         }
-                        className={`p-2 rounded-full text-white px-4 
+                        className={`w-full p-2 rounded-full text-white flex items-center justify-center
                         ${checkValidSlotThursdayUser(
                           `Slot${i + 1}`,
                           bookingUserByWeek
                         ) === true
-                            ? "bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50"
+                            ? "w-full bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50 flex items-center justify-center"
                             : checkValidSlotThursday(
                               `Slot${i + 1}`,
                               listBooking
                             ) === true
-                              ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
-                              : "bg-blue-500 hover:bg-blue-300"
+                              ? "w-full bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50 flex items-center justify-center"
+                              : "w-full bg-blue-500 hover:bg-blue-300 flex items-center justify-center"
                           }
                 
                         ${checkValidSlotThursday(
                             `Slot${i + 1}`,
                             listBooking
                           ) === false && disableButtonsThurday
-                            ? "bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50"
-                            : "bg-blue-500 hover:bg-blue-300"
+                            ? "w-full bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50 flex items-center justify-center"
+                            : "w-full bg-blue-500 hover:bg-blue-300 flex items-center justify-center"
                           }`}
                       >
-                        Đặt
+                        <span className="hidden sm:inline">Đặt</span>
+                        <span className="inline sm:hidden">
+                          📅
+                        </span>
                       </button>
                     </td>
 
@@ -689,27 +702,30 @@ export default function InfomationDetailComponent({
                         onClick={() =>
                           handleBooking(`Slot${i + 1}#Friday#${weekValue}`)
                         }
-                        className={`p-2 rounded-full text-white px-4 
+                        className={`w-full p-2 rounded-full text-white flex items-center justify-center
                         ${checkValidSlotFridayUser(
                           `Slot${i + 1}`,
                           bookingUserByWeek
                         ) === true
-                            ? "bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50"
+                            ? "w-full bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50 flex items-center justify-center"
                             : checkValidSlotFriday(
                               `Slot${i + 1}`,
                               listBooking
                             ) === true
-                              ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
-                              : "bg-blue-500 hover:bg-blue-300"
+                              ? "w-full bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50 flex items-center justify-center"
+                              : "w-full bg-blue-500 hover:bg-blue-300 flex items-center justify-center"
                           }
                 
                         ${checkValidSlotFriday(`Slot${i + 1}`, listBooking) ===
                             false && disableButtonsFriday
-                            ? "bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50"
-                            : "bg-blue-500 hover:bg-blue-300"
+                            ? "w-full bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50 flex items-center justify-center"
+                            : "w-full bg-blue-500 hover:bg-blue-300 flex items-center justify-center"
                           }`}
                       >
-                        Đặt
+                        <span className="hidden sm:inline">Đặt</span>
+                        <span className="inline sm:hidden">
+                          📅
+                        </span>
                       </button>
                     </td>
 
@@ -726,29 +742,32 @@ export default function InfomationDetailComponent({
                         onClick={() =>
                           handleBooking(`Slot${i + 1}#Saturday#${weekValue}`)
                         }
-                        className={`p-2 rounded-full text-white px-4 
+                        className={`w-full p-2 rounded-full text-white flex items-center justify-center 
                         ${checkValidSlotSaturdayUser(
                           `Slot${i + 1}`,
                           bookingUserByWeek
                         ) === true
-                            ? "bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50"
+                            ? "w-full bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50 flex items-center justify-center"
                             : checkValidSlotSaturday(
                               `Slot${i + 1}`,
                               listBooking
                             ) === true
-                              ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
-                              : "bg-blue-500 hover:bg-blue-300"
+                              ? "w-full bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50 flex items-center justify-center"
+                              : "w-full bg-blue-500 hover:bg-blue-300 flex items-center justify-center"
                           }
                 
                         ${checkValidSlotSaturday(
                             `Slot${i + 1}`,
                             listBooking
                           ) === false && disableButtonsSaturday
-                            ? "bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50"
-                            : "bg-blue-500 hover:bg-blue-300"
+                            ? "w-full bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50 flex items-center justify-center"
+                            : "w-full bg-blue-500 hover:bg-blue-300 flex items-center justify-center"
                           }`}
                       >
-                        Đặt
+                        <span className="hidden sm:inline">Đặt</span>
+                        <span className="inline sm:hidden">
+                          📅
+                        </span>
                       </button>
                     </td>
 
@@ -765,27 +784,30 @@ export default function InfomationDetailComponent({
                         onClick={() =>
                           handleBooking(`Slot${i + 1}#Sunday#${weekValue}`)
                         }
-                        className={`p-2 rounded-full text-white px-4 
+                        className={`w-full p-2 rounded-full text-white flex items-center justify-center
                         ${checkValidSlotSundayUser(
                           `Slot${i + 1}`,
                           bookingUserByWeek
                         ) === true
-                            ? "bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50"
+                            ? "w-full bg-green-800 hover:bg-green-300 cursor-not-allowed opacity-50 flex items-center justify-center"
                             : checkValidSlotSunday(
-                              `Slot${i + 1}`,
+                              `w-full Slot${i + 1}`,
                               listBooking
                             ) === true
-                              ? "bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50"
-                              : "bg-blue-500 hover:bg-blue-300"
+                              ? "w-full bg-red-500 hover:bg-red-300 cursor-not-allowed opacity-50 flex items-center justify-center"
+                              : "w-full bg-blue-500 hover:bg-blue-300 flex items-center justify-center"
                           }
                 
                         ${checkValidSlotSunday(`Slot${i + 1}`, listBooking) ===
                             false && disableButtonsSunday
-                            ? "bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50"
-                            : "bg-blue-500 hover:bg-blue-300"
+                            ? "w-full bg-gray-400 hover:bg-gray-300 cursor-not-allowed opacity-50 flex items-center justify-center"
+                            : "w-full bg-blue-500 hover:bg-blue-300 flex items-center justify-center"
                           }`}
                       >
-                        Đặt
+                        <span className="hidden sm:inline">Đặt</span>
+                        <span className="inline sm:hidden">
+                          📅
+                        </span>
                       </button>
                     </td>
                   </tr>

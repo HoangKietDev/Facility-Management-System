@@ -88,7 +88,7 @@ export default function DetailPage({ params }: { params: { id: string } }) {
               className="w-screen h-screen rounded-md object-center"
             />
             <div>
-              <div className="p-5 shadow-xl rounded-lg flex space-x-10">
+              <div className="p-5 shadow-xl rounded-lg flex flex-col lg:flex-row lg:space-x-10 space-y-5 lg:space-y-0">
                 <InfomationDetailComponent
                   detailData={detailData}
                   showSuccessCategory={showSuccessCategory}
@@ -97,7 +97,7 @@ export default function DetailPage({ params }: { params: { id: string } }) {
               </div>
 
               {/* comment */}
-              <div className="flex justify-center pt-10">
+              <div className="flex justify-center pt-10 px-5">
                 <CommentComponent
                   detailData={detailData}
                   showErrorCategory={showErrorCategory}

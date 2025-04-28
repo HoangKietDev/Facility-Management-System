@@ -1,29 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { Calendar } from "primereact/calendar";
-import { Button } from "primereact/button";
-import { Carousel, CarouselResponsiveOption } from "primereact/carousel";
-import { Tag } from "primereact/tag";
-import "primeflex/primeflex.css";
+import { Carousel } from "primereact/carousel";
 import Link from "next/link";
-import {
-  getFacilities,
-  getFacilityDetail,
-} from "../../services/facilities.api";
-
-interface Product {
-  id: string;
-  code: string;
-  name: string;
-  description: string;
-  image: string;
-  price: number;
-  category: string;
-  quantity: number;
-  inventoryStatus: string;
-  rating: number;
-}
 
 interface Facility {
   _id: string;
@@ -36,31 +15,39 @@ interface Facility {
 }
 
 export default function CarouselTopComponent(props: any) {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [faci, setFaci] = useState<Facility[]>([]);
   const [data, setData] = useState<any[]>([]);
+  const [windowWidth, setWindowWidth] = useState<number>(0);
 
   useEffect(() => {
     if (props.data) {
-      const filteredData = props.data.filter((item : any) => item.totalBooked > 0);
+      const filteredData = props.data.filter((item: any) => item.totalBooked > 0);
       setData(filteredData);
     }
+
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    handleResize(); // Gọi ngay lần đầu tiên
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, [props.data]);
 
   const productTemplate = (facility: any) => {
     return (
       <Link href={"/detail/" + facility._id}>
         <div
-          className={`relative text-center h-72  cursor-pointer m-5 z-50 shadow-xl border rounded-lg ${
+          className={`relative text-center h-72 cursor-pointer m-5 z-50 shadow-xl border rounded-lg ${
             data.length === 1 ? "w-5 flex justify-center" : ""
           }`}
         >
           <Image
             width={500}
             height={500}
-            src={
-              facility.image ? facility.image : "https://picsum.photos/200/300"
-            }
+            src={facility.image ? facility.image : "https://picsum.photos/200/300"}
             alt={facility.name}
             className="w-screen h-full rounded-lg"
           />
@@ -77,12 +64,21 @@ export default function CarouselTopComponent(props: any) {
     );
   };
 
+  // Điều chỉnh numVisible dựa trên kích thước màn hình
+  let numVisible = 4;
+  if (windowWidth <= 640) {
+    numVisible = 1;  // Mobile: Hiển thị 1 item
+  } else if (windowWidth <= 1024) {
+    numVisible = 2;  // Tablet: Hiển thị 2 items
+  }
+
   return (
-    <div className="px-16">
+    <div className="px-4 sm:px-8 md:px-16 lg:px-32">
       <Carousel
+        key={numVisible}  // Trigger lại render carousel khi numVisible thay đổi
         value={data}
-        numVisible={4}
-        numScroll={4}
+        numVisible={numVisible}
+        numScroll={2}
         circular
         prevIcon={
           <div className="bg-gray-300 p-3">

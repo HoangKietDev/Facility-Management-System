@@ -265,14 +265,14 @@ export default function Home() {
       </div>
       {role === "Student" && (
         <i
-          className="pi pi-inbox font-bold text-white bg-green-400 p-3 rounded-full back text-3xl cursor-pointer fixed top-3/4 right-10 z-50   "
+          className="pi pi-inbox font-bold text-white bg-green-400 p-3 rounded-full back text-3xl cursor-pointer fixed bottom-10 right-5 z-50   "
           onClick={() => setLoginChat(!loginChat)}
         ></i>
       )}
 
       {loginChat && (
         <div
-          className="fixed bottom-5 right-28 bg-white p-4 border border-gray-300 overflow-y-auto z-50"
+          className="fixed bottom-5 right-10 bg-white p-4 border border-gray-300 overflow-y-auto z-10"
           style={{ maxHeight: "400px" }}
         >
           {role === "Student" && (
